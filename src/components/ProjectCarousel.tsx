@@ -14,6 +14,13 @@ interface ProjectCarouselProps {
   initialSlug: string;
 }
 
+const projectNames: Record<string, string> = {
+  blingish: 'Blingish',
+  daily: 'Daily Greens',
+  farm: 'A1 Farm',
+  ziya: 'Portfolio',
+};
+
 export default function ProjectCarousel({ projects, initialSlug }: ProjectCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -102,6 +109,7 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
                 height: '100vh', 
                 overflowY: 'auto', 
                 scrollSnapAlign: 'start',
+                scrollSnapStop: 'always',
                 padding: '100px 20px 40px 20px',
                 boxSizing: 'border-box',
               }}
@@ -116,7 +124,7 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
                 marginBottom: '40px',
                 color: '#ffffff'
               }}>
-                {project.slug}
+                {projectNames[project.slug] || project.slug}
               </h1>
 
               {/* Vertical Stack with 0 gap and window decoration */}

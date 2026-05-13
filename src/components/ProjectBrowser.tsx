@@ -36,7 +36,7 @@ export default function ProjectBrowser() {
           PROJECTS
         </h2>
 
-        <Link href="/projects/daily" style={{ textDecoration: 'none' }}>
+        <Link href="/projects/blingish" style={{ textDecoration: 'none' }}>
           <button style={{
             background: 'transparent',
             border: '1px solid rgba(0,212,255,0.4)',
