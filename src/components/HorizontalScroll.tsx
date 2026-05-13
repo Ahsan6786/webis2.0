@@ -29,13 +29,7 @@ const dimensions = [
   },
 ];
 
-const projects = [
-  {
-    title: 'LTC Portal',
-    category: 'Finance',
-    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80',
-  },
-];
+const projects: any[] = [];
 
 /* ── Background visuals ── */
 
