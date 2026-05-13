@@ -137,6 +137,21 @@ export default function ShowcaseSection() {
           },
         }
       );
+
+      // Mobile scroll trigger for services
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+      if (isMobile) {
+        showcaseItems.forEach((_, i) => {
+          ScrollTrigger.create({
+            trigger: `.module-${i}`,
+            start: 'top 70%',
+            end: 'bottom 30%',
+            onToggle: (self) => {
+              if (self.isActive) setHoveredIndex(i);
+            },
+          });
+        });
+      }
     }, section);
 
     return () => ctx.revert();
@@ -260,18 +275,7 @@ export default function ShowcaseSection() {
                 }}>
                   MODULE // 0{i + 1}
                 </span>
-                <span style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '10px',
-                  letterSpacing: '0.1em',
-                  color: item.accent,
-                  opacity: 0.8,
-                  border: `1px solid ${item.accent}`,
-                  padding: '2px 6px',
-                  borderRadius: '3px',
-                }}>
-                  ACTIVE
-                </span>
+
               </div>
 
               <h3 style={{
