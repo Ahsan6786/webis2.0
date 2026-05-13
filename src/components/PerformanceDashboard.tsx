@@ -32,7 +32,7 @@ function CountUp({ end, duration = 1500, suffix = '', trigger = true }: { end: n
       }
     }, 16);
     return () => clearInterval(timer);
-  }, [end, duration, trigger]);
+  }, [end, duration]);
 
   return <span>{count}{suffix}</span>;
 }
