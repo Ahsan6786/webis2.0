@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const projects = [
-  { slug: 'blingish', name: 'BLINGISH', id: 'SYS.001', category: 'E-COMMERCE SYSTEM' },
-  { slug: 'daily', name: 'DAILY', id: 'SYS.002', category: 'PRODUCTIVITY PLATFORM' },
-  { slug: 'farm', name: 'A1 FARMS', id: 'SYS.003', category: 'AGRICULTURAL SYSTEM' },
-  { slug: 'ziya', name: 'ZIYA', id: 'SYS.004', category: 'AI INTERFACE' },
+  { slug: 'blingish', name: 'BLINGISH', id: 'SYS.001', category: 'E-COMMERCE SYSTEM', firstImage: '1.png' },
+  { slug: 'daily', name: 'DAILY', id: 'SYS.002', category: 'PRODUCTIVITY PLATFORM', firstImage: 'a.png' },
+  { slug: 'farm', name: 'A1 FARMS', id: 'SYS.003', category: 'AGRICULTURAL SYSTEM', firstImage: 'f1.png' },
+  { slug: 'ziya', name: 'ZIYA', id: 'SYS.004', category: 'AI INTERFACE', firstImage: 'z1.png' },
 ];
 
 export default function ProjectBrowser() {
@@ -15,7 +15,7 @@ export default function ProjectBrowser() {
     // Preload first image of each project to make loading instant
     projects.forEach(project => {
       const img = new (window as any).Image();
-      img.src = `/projects/${project.slug}/a.png`;
+      img.src = `/projects/${project.slug}/${project.firstImage}`;
     });
   }, []);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
