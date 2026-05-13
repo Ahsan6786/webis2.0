@@ -47,14 +47,11 @@ export default function RootLayout({
           top: '-25%', left: '-25%',
           width: '150vw', height: '150vh',
           background: `
-            radial-gradient(ellipse 80% 60% at 30% 60%, rgba(0,212,255,0.1) 0%, transparent 70%),
-            radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0,120,200,0.12) 0%, transparent 60%),
-            radial-gradient(circle at 50% 50%, rgba(100,0,255,0.05) 0%, transparent 50%)
+            radial-gradient(ellipse 50% 30% at 20% 40%, rgba(0,212,255,0.06) 0%, rgba(0,212,255,0.02) 40%, transparent 70%),
+            radial-gradient(ellipse 40% 25% at 80% 60%, rgba(0,120,200,0.08) 0%, rgba(0,120,200,0.03) 35%, transparent 60%)
           `,
           pointerEvents: 'none',
           zIndex: 0,
-          animation: 'gradientMove 30s ease-in-out infinite',
-          filter: 'blur(150px)',
         }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           {children}
