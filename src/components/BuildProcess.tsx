@@ -91,7 +91,7 @@ export default function BuildProcess() {
       ref={sectionRef}
       id="process"
       style={{
-        background: 'transparent',
+        background: 'var(--graphite)',
         padding: 'clamp(80px, 12vh, 160px) clamp(24px, 6vw, 96px)',
         position: 'relative',
         overflow: 'hidden',

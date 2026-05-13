@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --black: #000000;
-  --graphite-deep: #080808;
-  --graphite: #0d0d0d;
-  --graphite-light: #141414;
-  --graphite-mid: #1a1a1a;
-  --surface: #111111;
-  --surface-light: #1c1c1c;
-  --border: rgba(255,255,255,0.04);
-  --border-mid: rgba(255,255,255,0.08);
+  --black: #030508; /* Deep blue-black */
+  --graphite-deep: #07090b;
+  --graphite: #0a0d10;
+  --graphite-light: #101418;
+  --graphite-mid: #1a1e24;
+  --surface: #141820;
+  --surface-light: #1e2430;
+  --border: rgba(255,255,255,0.06);
+  --border-mid: rgba(255,255,255,0.1);
   --white: #ffffff;
-  --white-80: rgba(255,255,255,0.8);
-  --white-60: rgba(255,255,255,0.6);
-  --white-40: rgba(255,255,255,0.4);
-  --white-20: rgba(255,255,255,0.2);
-  --white-10: rgba(255,255,255,0.1);
-  --white-05: rgba(255,255,255,0.05);
+  --white-80: rgba(255,255,255,0.85);
+  --white-60: rgba(255,255,255,0.7);
+  --white-40: rgba(255,255,255,0.5);
+  --white-20: rgba(255,255,255,0.3);
+  --white-10: rgba(255,255,255,0.15);
+  --white-05: rgba(255,255,255,0.08);
   --cyan: #00d4ff;
   --cyan-dim: rgba(0, 212, 255, 0.15);
   --cyan-glow: rgba(0, 212, 255, 0.4);

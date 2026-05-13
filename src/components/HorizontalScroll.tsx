@@ -301,7 +301,7 @@ export default function HorizontalScroll() {
     <section
       ref={sectionRef}
       id="dimensions"
-      style={{ position: 'relative', height: '100vh' }}
+      style={{ position: 'relative', height: '100vh', background: 'var(--graphite-deep)' }}
     >
       <div style={{ overflow: 'hidden', width: '100vw', height: '100vh' }}>
         <div

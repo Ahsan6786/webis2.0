@@ -33,8 +33,8 @@ export default function HeroSection() {
         position: 'absolute',
         inset: 0,
         background: `
-          radial-gradient(ellipse 80% 60% at 30% 60%, rgba(0,212,255,0.08) 0%, transparent 70%),
-          radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0,80,120,0.1) 0%, transparent 65%)
+          radial-gradient(ellipse 60% 40% at 30% 60%, rgba(0,212,255,0.08) 0%, transparent 50%),
+          radial-gradient(ellipse 40% 30% at 70% 40%, rgba(0,80,120,0.1) 0%, transparent 45%)
         `,
         pointerEvents: 'none',
       }} />
