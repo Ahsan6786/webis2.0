@@ -28,25 +28,52 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
 
   return (
     <main style={{ background: '#030508', minHeight: '100vh', color: '#ffffff', overflow: 'hidden' }}>
-      {/* Fixed Header */}
+      {/* Fixed Header with Pill Buttons */}
       <div style={{ 
         position: 'fixed', 
-        top: 0, left: 0, right: 0, 
-        padding: '20px 24px', 
-        borderBottom: '1px solid rgba(255,255,255,0.05)',
-        background: 'rgba(3, 5, 8, 0.8)',
-        backdropFilter: 'blur(10px)',
+        top: '20px', left: '20px', right: '20px', 
         zIndex: 100,
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        pointerEvents: 'none',
       }}>
-        <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '14px', fontFamily: 'Space Grotesk' }}>
+        <Link href="/" style={{ 
+          color: '#ffffff', 
+          textDecoration: 'none', 
+          fontSize: '12px', 
+          fontFamily: 'Space Grotesk',
+          background: 'rgba(255,255,255,0.05)',
+          padding: '10px 20px',
+          borderRadius: '30px',
+          border: '1px solid rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(10px)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          pointerEvents: 'auto',
+          transition: 'all 0.3s ease',
+        }}>
           ← BACK TO ARCHIVE
         </Link>
-        <span style={{ color: '#00d4ff', fontSize: '12px', fontFamily: 'Space Grotesk', letterSpacing: '0.05em' }}>
+
+        <div style={{ 
+          color: '#00d4ff', 
+          fontSize: '12px', 
+          fontFamily: 'Space Grotesk', 
+          letterSpacing: '0.05em',
+          background: 'rgba(0,212,255,0.05)',
+          padding: '10px 20px',
+          borderRadius: '30px',
+          border: '1px solid rgba(0,212,255,0.1)',
+          backdropFilter: 'blur(10px)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          pointerEvents: 'auto',
+        }}>
           SWIPE LEFT TO VIEW MORE PROJECTS →
-        </span>
+        </div>
       </div>
 
       {/* Horizontal Container */}
@@ -65,14 +92,14 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
           <div 
             key={project.slug}
             id={`project-${project.slug}`}
-            style={{ 
-              minWidth: '100vw', 
-              height: 'calc(100vh - 60px)', 
-              overflowY: 'auto', 
-              scrollSnapAlign: 'start',
-              padding: '20px',
-              boxSizing: 'border-box',
-            }}
+              style={{ 
+                minWidth: '100vw', 
+                height: '100vh', 
+                overflowY: 'auto', 
+                scrollSnapAlign: 'start',
+                padding: '100px 20px 40px 20px',
+                boxSizing: 'border-box',
+              }}
           >
             <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
               <h1 style={{ 
@@ -87,10 +114,36 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
                 {project.slug}
               </h1>
 
-              {/* Vertical Stack with 0 gap */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+              {/* Vertical Stack with 0 gap and window decoration */}
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '0',
+                border: '1px solid rgba(255,255,255,0.05)',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                background: 'rgba(255,255,255,0.01)',
+              }}>
                 {project.images.map((img, i) => (
                   <div key={img} style={{ width: '100%', position: 'relative' }}>
+                    {/* Window header for the first image */}
+                    {i === 0 && (
+                      <div style={{
+                        background: 'rgba(255,255,255,0.03)',
+                        padding: '12px 16px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                      }}>
+                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }} />
+                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }} />
+                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }} />
+                        <span style={{ marginLeft: '8px', color: 'rgba(255,255,255,0.25)', fontSize: '11px', fontFamily: 'Space Grotesk' }}>
+                          system_window.exe
+                        </span>
+                      </div>
+                    )}
                     <img
                       src={`/projects/${project.slug}/${img}`}
                       alt={`${project.slug} screenshot`}
