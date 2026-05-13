@@ -31,26 +31,6 @@ const dimensions = [
 
 const projects = [
   {
-    title: 'Revial',
-    category: 'Brand Experience',
-    image: '/revial.jpeg',
-  },
-  {
-    title: 'Mitra Ai',
-    category: 'Artificial Intelligence',
-    image: '/mitraai.png',
-  },
-  {
-    title: 'Dailygreens',
-    category: 'E-Commerce',
-    image: '/daily.png',
-  },
-  {
-    title: 'a1 farms',
-    category: 'Agriculture',
-    image: '/a1farms.png',
-  },
-  {
     title: 'LTC Portal',
     category: 'Finance',
     image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=800&q=80',
