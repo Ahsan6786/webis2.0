@@ -271,6 +271,7 @@ export default function ShowcaseSection() {
               transition: 'opacity 0.5s ease',
             }} />
 
+            <div>
               <div style={{ marginBottom: '32px' }}>
               </div>
 
