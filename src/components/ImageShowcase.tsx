@@ -65,16 +65,16 @@ export default function ImageShowcase() {
         }
       );
 
-      gsap.to('.marquee-track', {
+      const track = section.querySelector('.marquee-track');
+      const tl = gsap.to(track, {
         xPercent: -50,
         ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        }
+        duration: 40,
+        repeat: -1,
       });
+
+      track?.addEventListener('mouseenter', () => tl.pause());
+      track?.addEventListener('mouseleave', () => tl.play());
     }, section);
 
     return () => ctx.revert();
