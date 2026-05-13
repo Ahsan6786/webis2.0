@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface Project {
   slug: string;
@@ -15,6 +16,7 @@ interface ProjectCarouselProps {
 
 export default function ProjectCarousel({ projects, initialSlug }: ProjectCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Scroll to the initial project
@@ -38,24 +40,27 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
         alignItems: 'center',
         pointerEvents: 'none',
       }}>
-        <Link href="/" style={{ 
-          color: '#ffffff', 
-          textDecoration: 'none', 
-          fontSize: '12px', 
-          fontFamily: 'Space Grotesk',
-          background: 'rgba(255,255,255,0.05)',
-          padding: '10px 20px',
-          borderRadius: '30px',
-          border: '1px solid rgba(255,255,255,0.1)',
-          backdropFilter: 'blur(10px)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          pointerEvents: 'auto',
-          transition: 'all 0.3s ease',
-        }}>
-          ← BACK TO ARCHIVE
-        </Link>
+        <button 
+          onClick={() => router.back()}
+          style={{ 
+            color: '#ffffff', 
+            fontSize: '12px', 
+            fontFamily: 'Space Grotesk',
+            background: 'rgba(255,255,255,0.05)',
+            padding: '10px 20px',
+            borderRadius: '30px',
+            border: '1px solid rgba(255,255,255,0.1)',
+            backdropFilter: 'blur(10px)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            pointerEvents: 'auto',
+            transition: 'all 0.3s ease',
+            cursor: 'pointer',
+          }}
+        >
+          ← BACK
+        </button>
 
         <div style={{ 
           color: '#00d4ff', 
