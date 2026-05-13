@@ -230,6 +230,12 @@ export default function ShowcaseSection() {
             .module-0 { grid-column: span 2; }
             .module-3 { grid-column: span 2; }
           }
+          @media (max-width: 1023px) {
+            .modular-grid > div {
+              opacity: 1 !important;
+              transform: none !important;
+            }
+          }
         `}</style>
         {showcaseItems.map((item, i) => (
           <div
