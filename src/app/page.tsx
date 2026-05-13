@@ -5,36 +5,36 @@ import dynamic from 'next/dynamic';
 import HeroSection from '@/components/HeroSection';
 
 // Lazy load heavy components
-const LogoMatrix = dynamic(() => import('@/components/LogoMatrix'), { ssr: false });
+const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'), { ssr: false });
+const ImageShowcase = dynamic(() => import('@/components/ImageShowcase'), { ssr: false });
 const BuildProcess = dynamic(() => import('@/components/BuildProcess'), { ssr: false });
 const ShowcaseSection = dynamic(() => import('@/components/ShowcaseSection'), { ssr: false });
 const ProjectBrowser = dynamic(() => import('@/components/ProjectBrowser'), { ssr: false });
-const ImageShowcase = dynamic(() => import('@/components/ImageShowcase'), { ssr: false });
 const FinalCTA = dynamic(() => import('@/components/FinalCTA'), { ssr: false });
 
 export default function Home() {
   return (
     <>
       <main>
-        {/* 1. HERO */}
+        {/* SECTION 1 — Hero / Opening */}
         <HeroSection />
 
-        {/* 2. TRUST / LOGO MATRIX */}
-        <LogoMatrix />
+        {/* SECTION 2 — Horizontal Scroll Dimensions */}
+        <HorizontalScroll />
 
-        {/* 3. PROCESS */}
+        {/* SECTION 3 — Build Process */}
         <BuildProcess />
 
-        {/* 4. SERVICES */}
+        {/* SECTION 4 — Services Showcase */}
         <ShowcaseSection />
 
-        {/* 5. PROJECT ARCHIVE */}
+        {/* SECTION 5 — Project Browser */}
         <ProjectBrowser />
 
-        {/* 6. TESTIMONIALS */}
+        {/* SECTION 6 — Immersive Image Showcase (Testimonials) */}
         <ImageShowcase />
 
-        {/* 7. FINAL CTA */}
+        {/* SECTION 7 — Final CTA */}
         <FinalCTA />
       </main>
     </>
