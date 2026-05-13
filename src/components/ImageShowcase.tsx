@@ -12,6 +12,12 @@ export default function ImageShowcase() {
       overflow: 'hidden',
       background: 'radial-gradient(circle at center, rgba(255,255,255,0.01) 0%, #000000 100%)',
     }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-image { display: none !important; }
+          .mobile-image { display: block !important; }
+        }
+      `}</style>
       {/* Ambient background glow */}
       <div style={{
         position: 'absolute',
@@ -62,15 +68,6 @@ export default function ImageShowcase() {
           marginBottom: '80px',
           position: 'relative',
         }}>
-          {/* Soft ambient glow behind image */}
-          <div style={{
-            position: 'absolute',
-            width: '80%',
-            height: '80%',
-            background: 'radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 80%)',
-            zIndex: -1,
-          }} />
-
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -89,19 +86,36 @@ export default function ImageShowcase() {
               opacity: 0.7,
             }}
           >
-            <Image
-              src="/companies.png"
-              alt="Network of brands and systems"
-              width={1600}
-              height={900}
-              layout="responsive"
-              objectFit="contain"
-              priority
-              style={{
-                display: 'block',
-                filter: 'grayscale(100%)',
-              }}
-            />
+            <div className="desktop-image">
+              <Image
+                src="/companies.png"
+                alt="Network of brands and systems"
+                width={1600}
+                height={900}
+                layout="responsive"
+                objectFit="contain"
+                priority
+                style={{
+                  display: 'block',
+                  filter: 'grayscale(100%)',
+                }}
+              />
+            </div>
+            <div className="mobile-image" style={{ display: 'none' }}>
+              <Image
+                src="/company-mobile.png"
+                alt="Network of brands and systems"
+                width={900}
+                height={1600}
+                layout="responsive"
+                objectFit="contain"
+                priority
+                style={{
+                  display: 'block',
+                  filter: 'grayscale(100%)',
+                }}
+              />
+            </div>
           </motion.div>
         </div>
 
