@@ -34,8 +34,7 @@ export default function HeroSection() {
         inset: 0,
         background: `
           radial-gradient(ellipse 80% 60% at 30% 60%, rgba(0,212,255,0.08) 0%, transparent 70%),
-          radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0,80,120,0.1) 0%, transparent 65%),
-          radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%)
+          radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0,80,120,0.1) 0%, transparent 65%)
         `,
         pointerEvents: 'none',
       }} />
