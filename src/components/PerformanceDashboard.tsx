@@ -111,7 +111,7 @@ const COLORS = ['#00d4ff', 'rgba(255,255,255,0.1)'];
 export default function PerformanceDashboard() {
   const [mounted, setMounted] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     setMounted(true);
