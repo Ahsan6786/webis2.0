@@ -159,6 +159,9 @@ function ProjectsVisual() {
 
       {/* Messages (Stacked for sequence) */}
       <div id="text-sequence-container" style={{ flexShrink: 0, width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+        <p className="text-system" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', whiteSpace: 'nowrap' }}>
+          — VISION
+        </p>
         {messages.map((msg, i) => (
           <h2 key={`msg-${i}`} data-msg-idx={i} style={{
             position: 'absolute',
@@ -348,6 +351,9 @@ export default function HorizontalScroll() {
                 }}>
 
 
+                  <p className="text-system" style={{ color: 'rgba(0,212,255,0.5)', marginBottom: '16px', letterSpacing: '0.1em' }}>
+                    — {dim.label}
+                  </p>
                   <h2
                     data-headline
                     style={{

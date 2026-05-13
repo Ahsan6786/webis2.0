@@ -84,6 +84,9 @@ export default function StatsStrip() {
           50% { transform: translateY(-6px); }
         }
       `}</style>
+      <p className="text-system" style={{ gridColumn: '1 / -1', color: 'rgba(255,255,255,0.3)', marginBottom: '16px', letterSpacing: '0.2em', textAlign: 'center' }}>
+        — IMPACT & METRICS
+      </p>
       {/* Subtle background */}
       <div style={{
         position: 'absolute', inset: 0,
