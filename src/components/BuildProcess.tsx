@@ -184,7 +184,7 @@ export default function BuildProcess() {
           })}
 
           {/* Nodes */}
-          {steps.filter(s => s.id !== 'step-launch').map((step, i) => {
+          {steps.map((step, i) => {
             const pos = getPos(step);
             const isActive = i <= activeStep;
             const isCurrent = i === activeStep;

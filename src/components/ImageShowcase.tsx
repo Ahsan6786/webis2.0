@@ -158,8 +158,7 @@ export default function ImageShowcase() {
           lineHeight: 1.05,
           color: '#ffffff',
         }}>
-          ENGINEERED TRUST.<br />
-          <span style={{ color: 'rgba(255,255,255,0.25)' }}>POST-LAUNCH IMPACT.</span>
+          ENGINEERED TRUST.
         </h2>
       </div>
 
