@@ -163,7 +163,7 @@ export default function ShowcaseSection() {
       ref={sectionRef}
       id="showcase"
       style={{
-        background: '#000000',
+        background: 'transparent',
         padding: 'clamp(80px, 12vh, 160px) 0',
         position: 'relative',
         overflow: 'hidden',
