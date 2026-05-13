@@ -9,6 +9,7 @@ const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'), 
 const ImageShowcase = dynamic(() => import('@/components/ImageShowcase'), { ssr: false });
 const BuildProcess = dynamic(() => import('@/components/BuildProcess'), { ssr: false });
 const ShowcaseSection = dynamic(() => import('@/components/ShowcaseSection'), { ssr: false });
+const ProjectBrowser = dynamic(() => import('@/components/ProjectBrowser'), { ssr: false });
 const FinalCTA = dynamic(() => import('@/components/FinalCTA'), { ssr: false });
 
 export default function Home() {
@@ -27,10 +28,13 @@ export default function Home() {
         {/* SECTION 4 — Build Process */}
         <BuildProcess />
 
-        {/* SECTION 5 — Project Showcase */}
+        {/* SECTION 5 — Services Showcase */}
         <ShowcaseSection />
 
-        {/* SECTION 6 — Final CTA */}
+        {/* SECTION 6 — Project Browser */}
+        <ProjectBrowser />
+
+        {/* SECTION 7 — Final CTA */}
         <FinalCTA />
       </main>
     </>
