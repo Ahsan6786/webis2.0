@@ -55,9 +55,9 @@ export default function HeroSection() {
           {(phase === 'system' || phase === 'headline' || phase === 'done') && (
             <motion.p
               key="brand"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: -10, scale: 1.5 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontSize: '11px',
