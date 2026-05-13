@@ -271,23 +271,13 @@ export default function ShowcaseSection() {
               transition: 'opacity 0.5s ease',
             }} />
 
-            <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-                <span style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '11px',
-                  letterSpacing: '0.1em',
-                  color: 'rgba(255,255,255,0.4)',
-                }}>
-                  MODULE // 0{i + 1}
-                </span>
-
+              <div style={{ marginBottom: '32px' }}>
               </div>
 
               <h3 style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '24px',
-                fontWeight: 300,
+                fontSize: '28px',
+                fontWeight: 400,
                 color: '#ffffff',
                 marginBottom: '12px',
                 letterSpacing: '-0.01em',
@@ -320,7 +310,6 @@ export default function ShowcaseSection() {
               borderTop: '1px solid rgba(255,255,255,0.03)',
             }}>
               <span>{item.subtitle}</span>
-              <span>SYS.LOC // 00{i + 1}</span>
             </div>
           </div>
         ))}
