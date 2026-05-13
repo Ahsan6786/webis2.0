@@ -8,37 +8,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    quote: "Working with Webis was a game-changer. They didn't just build a website; they created a high-converting system that scales with our growth.",
-    author: "Sarah Chen",
-    role: "CEO, Revial",
+    quote: "Webis didn't just build a website; they crafted a high-end digital flagship for Blingish. Their ability to translate premium brand values into technical reality is unmatched. Our conversion rates have skyrocketed since launch.",
+    author: "Harsh Vardhan",
+    role: "Founder, Blingish",
     accent: "#ffffff",
     bgColor: "#ff2a6d", // Pink
   },
   {
-    quote: "The attention to detail and engineering excellence is unmatched. They delivered a platform that feels alive and drives real results.",
-    author: "Alex Rivers",
-    role: "Founder, Mitra Ai",
+    quote: "The Webis team immediately understood our vision and delivered a clean, professional website exactly as needed. Their rapid response time and technical execution made the entire process seamless and results-driven for us.",
+    author: "Ziya Murad Khan",
+    role: "Proprietor, Daily Greens",
     accent: "#ffffff",
     bgColor: "#05df97", // Green
   },
   {
-    quote: "They understand that design is not just how it looks, but how it works. Our conversion rate doubled after the launch.",
-    author: "Elena Rostova",
-    role: "Product Lead, Dailygreens",
+    quote: "Webis understood exactly what I needed with very little conversation and delivered a perfect website. They are a highly efficient and result-oriented agency that I would recommend to any growing business.",
+    author: "Yassh Agarwal",
+    role: "Fitness Professional",
     accent: "#ffffff",
     bgColor: "#ff5c00", // Orange
   },
   {
-    quote: "Their team brought a level of technical sophistication we hadn't found anywhere else. Truly a partner in innovation.",
-    author: "David Park",
-    role: "CTO, a1 farms",
+    quote: "Webis did an exceptional job bringing my vision to life. They built a clean, modern, and highly functional website. Their attention to detail and willingness to accommodate requests set them truly apart from others.",
+    author: "Dr. Vaishali Imam",
+    role: "Pediatrician",
     accent: "#ffffff",
     bgColor: "#00f3ff", // Waterblue
   },
   {
-    quote: "Precision, speed, and vision. Webis transformed our legacy portal into a state-of-the-art digital experience.",
-    author: "James Wilson",
-    role: "Director, LTC Portal",
+    quote: "Working with Webis was a game-changer for our B2B reach. They engineered a robust, high-performance platform for A1 Farms that has significantly boosted our lead generation and overall digital trust score.",
+    author: "Tarique Khan",
+    role: "Manager, A1 Farms",
     accent: "#ffffff",
     bgColor: "#7b2cbf", // Purple
   },
