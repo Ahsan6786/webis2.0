@@ -10,7 +10,7 @@ export default function ImageShowcase() {
       padding: '120px 24px', 
       position: 'relative', 
       overflow: 'hidden',
-      background: '#0a0a0a', // Graphite black
+      background: 'radial-gradient(circle at center, #141414 0%, #0a0a0a 100%)',
     }}>
       {/* Ambient background glow */}
       <div style={{
@@ -82,9 +82,10 @@ export default function ImageShowcase() {
               width: '100%',
               borderRadius: '20px',
               overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.03)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
               cursor: 'pointer',
+              maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
             }}
           >
             <Image
@@ -97,6 +98,7 @@ export default function ImageShowcase() {
               priority
               style={{
                 display: 'block',
+                filter: 'grayscale(100%)',
               }}
             />
           </motion.div>
