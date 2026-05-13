@@ -1,16 +1,68 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function HeroSection() {
   const [phase, setPhase] = useState<'init' | 'system' | 'headline' | 'done'>('init');
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('system'), 300);
     const t2 = setTimeout(() => setPhase('headline'), 2200);
     const t3 = setTimeout(() => setPhase('done'), 4000);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
+
+  // Twinkling stars effect (copied from FinalCTA)
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const W = canvas.width, H = canvas.height;
+
+    interface Star {
+      x: number; y: number;
+      size: number;
+      opacity: number;
+      speed: number;
+    }
+
+    const stars: Star[] = Array.from({ length: 150 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      size: Math.random() * 1,
+      opacity: Math.random() * 0.5 + 0.1,
+      speed: Math.random() * 0.1 + 0.02,
+    }));
+
+    let frame = 0;
+
+    const draw = () => {
+      frame++;
+      ctx.clearRect(0, 0, W, H);
+
+      // Stars
+      stars.forEach(s => {
+        s.opacity = 0.1 + Math.sin(frame * s.speed + s.x) * 0.2 + 0.15;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.opacity})`;
+        ctx.fill();
+      });
+
+      rafRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -27,6 +79,12 @@ export default function HeroSection() {
         overflow: 'hidden',
       }}
     >
+      {/* Twinkling Stars Canvas */}
+      <canvas
+        ref={canvasRef}
+        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+      />
+
       {/* Static atmospheric layers — no animation, no twinkling */}
       {/* Deep radial glow — fixed, subtle */}
       <div style={{
