@@ -47,7 +47,7 @@ export default function TestimonialsPage() {
     }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
         {/* Navigation */}
-        <Link href="/" style={{
+        <Link href="/#testimonials" style={{
           fontFamily: 'Space Grotesk, sans-serif',
           fontSize: '12px',
           letterSpacing: '0.1em',
@@ -67,9 +67,6 @@ export default function TestimonialsPage() {
 
         {/* Header */}
         <div style={{ marginBottom: '100px' }}>
-          <p className="text-system" style={{ color: 'rgba(0,212,255,0.5)', marginBottom: '16px' }}>
-            TESTIMONIALS
-          </p>
           <h1 style={{
             fontSize: 'clamp(40px, 6vw, 80px)',
             fontWeight: 300,
@@ -77,7 +74,7 @@ export default function TestimonialsPage() {
             lineHeight: 1,
             marginBottom: '24px'
           }}>
-            VERIFIED SIGNALS.
+            Testimonials
           </h1>
           <p style={{
             fontFamily: 'Space Grotesk, sans-serif',

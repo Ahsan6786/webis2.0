@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function ImageShowcase() {
   return (
-    <section style={{ 
+    <section id="testimonials" style={{ 
       padding: '120px 24px', 
       position: 'relative', 
       overflow: 'hidden',
