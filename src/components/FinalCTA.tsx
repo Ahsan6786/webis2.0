@@ -237,7 +237,7 @@ export default function FinalCTA() {
         <div ref={ctaRef} style={{ opacity: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px' }}>
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a
-              href="mailto:mitraai0001@gmail.com"
+              href="mailto:mitraai0001@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Webis%20team,%0A%0AI'm%20interested%20in%20building%20a%20website%20with%20you.%20Please%20let%20me%20know%20how%20we%20can%20proceed.%0A%0ABest%20regards,"
               style={{
                 minWidth: '200px',
                 textAlign: 'center',

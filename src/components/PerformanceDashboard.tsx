@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useInView } from 'framer-motion';
 import {
   ResponsiveContainer,
   LineChart,
@@ -15,10 +16,11 @@ import {
   Cell
 } from 'recharts';
 
-function CountUp({ end, duration = 1500, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+function CountUp({ end, duration = 1500, suffix = '', trigger = true }: { end: number, duration?: number, suffix?: string, trigger?: boolean }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    if (!trigger) return;
     let start = 0;
     const increment = end / (duration / 16);
     const timer = setInterval(() => {
@@ -31,7 +33,7 @@ function CountUp({ end, duration = 1500, suffix = '' }: { end: number, duration?
       }
     }, 16);
     return () => clearInterval(timer);
-  }, [end, duration]);
+  }, [end, duration, trigger]);
 
   return <span>{count}{suffix}</span>;
 }
@@ -108,6 +110,8 @@ const COLORS = ['#00d4ff', 'rgba(255,255,255,0.1)'];
 
 export default function PerformanceDashboard() {
   const [mounted, setMounted] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
     setMounted(true);
@@ -159,16 +163,16 @@ export default function PerformanceDashboard() {
         </div>
 
         {/* Grid Layout */}
-        <div className="stats-grid" style={{ 
+        <div ref={ref} className="stats-grid" style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
           gap: '24px',
           marginBottom: '24px'
         }}>
-          <StatCard title="Projects Completed" value={<CountUp end={55} suffix="+" />} sub="Across 12 countries" />
-          <StatCard title="Fastest Delivery" value={<CountUp end={5} suffix="h" />} sub="Record turnaround" />
-          <StatCard title="Client Satisfaction" value={<CountUp end={98} suffix="%" />} sub="5-star rated" />
-          <StatCard title="Support Response" value={<CountUp end={1} suffix="hr" />} sub="Average response time" />
+          <StatCard title="Projects Completed" value={<CountUp end={55} suffix="+" trigger={isInView} />} sub="Across 12 countries" />
+          <StatCard title="Fastest Delivery" value={<CountUp end={5} suffix="h" trigger={isInView} />} sub="Record turnaround" />
+          <StatCard title="Client Satisfaction" value={<CountUp end={98} suffix="%" trigger={isInView} />} sub="5-star rated" />
+          <StatCard title="Support Response" value={<CountUp end={1} suffix="hr" trigger={isInView} />} sub="Average response time" />
         </div>
 
         <div className="large-charts-grid" style={{ 
