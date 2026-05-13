@@ -69,7 +69,7 @@ export default function StatsStrip() {
     <section
       ref={sectionRef}
       style={{
-        background: '#000000',
+        background: 'transparent',
         padding: 'clamp(48px, 8vh, 80px) clamp(24px, 6vw, 96px)',
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',

@@ -20,7 +20,7 @@ export default function HeroSection() {
         position: 'relative',
         width: '100vw',
         height: '100vh',
-        background: '#000000',
+        background: 'transparent',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

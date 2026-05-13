@@ -14,7 +14,7 @@ const dimensions = [
     headline: 'Every project is a system,\nnot just a website.',
     sub: 'Movement communicates. Every transition carries meaning.',
     accent: '#00d4ff',
-    bg: '#000000',
+    bg: 'transparent',
     content: 'motion' as const,
   },
   {
@@ -24,7 +24,7 @@ const dimensions = [
     headline: 'FEATURED PROJECTS',
     sub: 'Hover to explore depth.',
     accent: '#ffffff',
-    bg: '#030303',
+    bg: 'transparent',
     content: 'projects' as const,
   },
 ];

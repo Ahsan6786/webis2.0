@@ -33,7 +33,29 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body style={{ position: 'relative' }}>
+        <style>{`
+          @keyframes gradientMove {
+            0% { transform: translate(-10%, -10%) rotate(0deg); }
+            50% { transform: translate(10%, 10%) rotate(180deg); }
+            100% { transform: translate(-10%, -10%) rotate(360deg); }
+          }
+        `}</style>
+        {/* Global Moving Gradient */}
+        <div style={{
+          position: 'fixed',
+          top: '-25%', left: '-25%',
+          width: '150vw', height: '150vh',
+          background: 'radial-gradient(circle at center, rgba(0,212,255,0.08) 0%, rgba(0,80,120,0.03) 50%, transparent 70%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+          animation: 'gradientMove 25s ease-in-out infinite',
+          filter: 'blur(80px)',
+        }} />
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
