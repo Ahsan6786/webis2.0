@@ -52,6 +52,28 @@ export default function HeroSection() {
       {/* Main headline and content */}
       <motion.div layout style={{ textAlign: 'center', position: 'relative', zIndex: 2, padding: '0 24px' }}>
         <AnimatePresence>
+          {(phase === 'system' || phase === 'headline' || phase === 'done') && (
+            <motion.p
+              key="brand"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: '12px',
+                fontWeight: 500,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#00d4ff',
+                marginBottom: '16px',
+              }}
+            >
+              WEBIS
+            </motion.p>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
           {(phase === 'headline' || phase === 'done') && (
             <motion.h1
               layout
