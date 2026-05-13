@@ -49,9 +49,10 @@ function ProjectsVisual() {
   ];
 
   const messages = [
-    "WE HEAR YOUR CHALLENGES.",
-    "WE UNDERSTAND YOUR VISION.",
-    "WE WILL SOLVE YOUR PROBLEM.",
+    "We solve the problems others avoid.",
+    "We build to be remembered.",
+    "We craft precision in every interaction.",
+    "We create digital experiences that feel alive.",
     "BEYOND EXPECTATIONS.",
   ];
 
