@@ -96,6 +96,21 @@ export default function PerformanceDashboard() {
 
   return (
     <section style={{ padding: '100px 24px', position: 'relative', overflow: 'hidden' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .charts-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .large-charts-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <p className="text-system" style={{ color: 'rgba(0,212,255,0.5)', marginBottom: '16px' }}>
@@ -123,7 +138,7 @@ export default function PerformanceDashboard() {
         </div>
 
         {/* Grid Layout */}
-        <div style={{ 
+        <div className="stats-grid" style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
           gap: '24px',
@@ -136,7 +151,7 @@ export default function PerformanceDashboard() {
           <StatCard title="Support Response" value="1hr" sub="Average response time" />
         </div>
 
-        <div style={{ 
+        <div className="large-charts-grid" style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
           gap: '24px',
@@ -171,7 +186,7 @@ export default function PerformanceDashboard() {
           </ChartCard>
         </div>
 
-        <div style={{ 
+        <div className="charts-grid" style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
           gap: '24px'
