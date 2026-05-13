@@ -11,6 +11,7 @@ const BuildProcess = dynamic(() => import('@/components/BuildProcess'), { ssr: f
 const ShowcaseSection = dynamic(() => import('@/components/ShowcaseSection'), { ssr: false });
 const ProjectBrowser = dynamic(() => import('@/components/ProjectBrowser'), { ssr: false });
 const FinalCTA = dynamic(() => import('@/components/FinalCTA'), { ssr: false });
+const PerformanceDashboard = dynamic(() => import('@/components/PerformanceDashboard'), { ssr: false });
 
 export default function Home() {
   return (
@@ -28,13 +29,16 @@ export default function Home() {
         {/* SECTION 4 — Services Showcase */}
         <ShowcaseSection />
 
-        {/* SECTION 5 — Project Browser */}
+        {/* SECTION 5 — Engineering Performance */}
+        <PerformanceDashboard />
+
+        {/* SECTION 6 — Project Browser */}
         <ProjectBrowser />
 
-        {/* SECTION 6 — Immersive Image Showcase (Testimonials) */}
+        {/* SECTION 7 — Immersive Image Showcase (Testimonials) */}
         <ImageShowcase />
 
-        {/* SECTION 7 — Final CTA */}
+        {/* SECTION 8 — Final CTA */}
         <FinalCTA />
       </main>
     </>
