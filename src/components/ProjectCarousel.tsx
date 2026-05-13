@@ -70,21 +70,23 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
         </button>
 
         <div style={{ 
-          color: '#00d4ff', 
+          color: '#ffffff', 
           fontSize: '12px', 
           fontFamily: 'Space Grotesk', 
           letterSpacing: '0.05em',
-          background: 'rgba(0,212,255,0.05)',
+          background: 'rgba(3, 5, 8, 0.8)',
           padding: '10px 20px',
           borderRadius: '30px',
-          border: '1px solid rgba(0,212,255,0.1)',
+          border: '1px solid rgba(0,212,255,0.3)',
           backdropFilter: 'blur(10px)',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
+          gap: '10px',
           pointerEvents: 'auto',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
         }}>
-          SWIPE LEFT TO VIEW MORE PROJECTS →
+          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00d4ff', boxShadow: '0 0 8px #00d4ff' }} />
+          SWIPE FOR MORE →
         </div>
       </div>
 
