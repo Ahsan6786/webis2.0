@@ -44,8 +44,8 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
         <Link href="/" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: '14px', fontFamily: 'Space Grotesk' }}>
           ← BACK TO ARCHIVE
         </Link>
-        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', fontFamily: 'Space Grotesk' }}>
-          SWIPE HORIZONTALLY TO SWITCH PROJECTS
+        <span style={{ color: '#00d4ff', fontSize: '12px', fontFamily: 'Space Grotesk', letterSpacing: '0.05em' }}>
+          SWIPE LEFT TO VIEW MORE PROJECTS →
         </span>
       </div>
 
