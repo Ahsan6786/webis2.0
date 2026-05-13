@@ -12,35 +12,35 @@ const testimonials = [
     author: "Harsh Vardhan",
     role: "Founder, Blingish",
     accent: "#ffffff",
-    bgColor: "#ff2a6d", // Pink
+    bgColor: "#ff2a6d",
   },
   {
     quote: "The Webis team immediately understood our vision and delivered a clean, professional website exactly as needed. Their rapid response time and technical execution made the entire process seamless and results-driven for us.",
     author: "Ziya Murad Khan",
     role: "Proprietor, Daily Greens",
     accent: "#ffffff",
-    bgColor: "#05df97", // Green
+    bgColor: "#05df97",
   },
   {
     quote: "Webis understood exactly what I needed with very little conversation and delivered a perfect website. They are a highly efficient and result-oriented agency that I would recommend to any growing business.",
     author: "Yassh Agarwal",
     role: "Fitness Professional",
     accent: "#ffffff",
-    bgColor: "#ff5c00", // Orange
+    bgColor: "#ff5c00",
   },
   {
     quote: "Webis did an exceptional job bringing my vision to life. They built a clean, modern, and highly functional website. Their attention to detail and willingness to accommodate requests set them truly apart from others.",
     author: "Dr. Vaishali Imam",
     role: "Pediatrician",
     accent: "#ffffff",
-    bgColor: "#00f3ff", // Waterblue
+    bgColor: "#00f3ff",
   },
   {
     quote: "Working with Webis was a game-changer for our B2B reach. They engineered a robust, high-performance platform for A1 Farms that has significantly boosted our lead generation and overall digital trust score.",
     author: "Tarique Khan",
     role: "Manager, A1 Farms",
     accent: "#ffffff",
-    bgColor: "#7b2cbf", // Purple
+    bgColor: "#7b2cbf",
   },
 ];
 
