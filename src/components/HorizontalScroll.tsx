@@ -210,19 +210,19 @@ export default function HorizontalScroll() {
         },
       });
 
-      // Hold the first panel for a bit (increased for readability)
-      tl.to({}, { duration: 0.4 });
+      // Hold the first panel/message for a bit
+      tl.to({}, { duration: 1.5 });
 
       // Translate to the end (where the stacked container fills the screen)
       tl.to(panelsEl, {
         x: -scrollDistance,
         ease: 'none',
-        duration: 1,
+        duration: 2,
       });
 
       // Text Sequence Animation (In-Place)
       const msgs = gsap.utils.toArray('[data-msg-idx]') as any[];
-      const bgColors = ['#030303', '#0a3a1e', '#004a66', '#1a0a3a']; // Black, Green, Water Blue, Dark Purple
+      const bgColors = ['#030303', '#0a3a1e', '#004a66', '#1a0a3a'];
       
       // Center all messages horizontally using GSAP
       gsap.set(msgs, { xPercent: -50 });
@@ -233,10 +233,14 @@ export default function HorizontalScroll() {
           gsap.set(msg, { opacity: 0, y: 20 });
           
           // Fade out previous message
-          tl.to(msgs[i-1], { opacity: 0, y: -20, filter: 'blur(5px)', duration: 0.5, ease: 'power2.inOut' });
+          tl.to(msgs[i-1], { opacity: 0, y: -20, filter: 'blur(5px)', duration: 0.8, ease: 'power2.inOut' });
           
           // Fade in current message
-          tl.to(msg, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' }, '+=0.2');
+          tl.to(msg, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out' }, '+=0.3');
+          
+          // Hold current message
+          tl.to({}, { duration: 1.5 });
+        }
           
           // Change background color of the panel
           tl.to('#dim-projects', { backgroundColor: bgColors[i], duration: 0.5, ease: 'power2.out' }, '<');
