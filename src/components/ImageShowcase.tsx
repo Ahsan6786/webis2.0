@@ -10,7 +10,7 @@ export default function ImageShowcase() {
       padding: '120px 24px', 
       position: 'relative', 
       overflow: 'hidden',
-      background: 'radial-gradient(circle at center, #141414 0%, #0a0a0a 100%)',
+      background: 'radial-gradient(circle at center, rgba(255,255,255,0.01) 0%, #000000 100%)',
     }}>
       {/* Ambient background glow */}
       <div style={{
@@ -84,8 +84,9 @@ export default function ImageShowcase() {
               overflow: 'hidden',
               boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
               cursor: 'pointer',
-              maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)',
+              maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%)',
+              WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%)',
+              opacity: 0.7,
             }}
           >
             <Image
