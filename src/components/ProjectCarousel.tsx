@@ -154,9 +154,6 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
                         <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }} />
                         <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }} />
                         <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }} />
-                        <span style={{ marginLeft: '8px', color: 'rgba(255,255,255,0.25)', fontSize: '11px', fontFamily: 'Space Grotesk' }}>
-                          system_window.exe
-                        </span>
                       </div>
                     )}
                     <img

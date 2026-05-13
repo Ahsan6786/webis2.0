@@ -23,35 +23,41 @@ export default function ProjectBrowser() {
   return (
     <section style={{ padding: '100px 24px', background: 'rgba(3, 5, 8, 0.5)', position: 'relative' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{
-          fontFamily: 'Inter, sans-serif',
-          fontSize: 'clamp(32px, 5vw, 72px)',
-          fontWeight: 300,
-          letterSpacing: '-0.02em',
-          lineHeight: 1.05,
-          color: '#ffffff',
-          marginBottom: '32px',
-          textTransform: 'uppercase',
-        }}>
-          PROJECTS
-        </h2>
-
-        <Link href="/projects/blingish" style={{ textDecoration: 'none' }}>
-          <button style={{
-            background: 'transparent',
-            border: '1px solid rgba(0,212,255,0.4)',
-            color: '#00d4ff',
-            padding: '12px 24px',
-            fontFamily: 'Space Grotesk',
-            fontSize: '14px',
-            letterSpacing: '0.1em',
-            cursor: 'pointer',
-            borderRadius: '4px',
-            transition: 'all 0.3s ease',
+        <div style={{ textAlign: 'center' }}>
+          <h2 style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 'clamp(32px, 5vw, 72px)',
+            fontWeight: 300,
+            letterSpacing: '-0.02em',
+            lineHeight: 1.05,
+            color: '#ffffff',
+            marginBottom: '32px',
+            textTransform: 'uppercase',
           }}>
-            VIEW PROJECTS →
-          </button>
-        </Link>
+            PROJECTS
+          </h2>
+
+          <Link href="/projects/blingish" style={{ textDecoration: 'none' }}>
+            <button style={{
+              background: 'rgba(0,212,255,0.05)',
+              border: '1px solid rgba(0,212,255,0.3)',
+              color: '#00d4ff',
+              padding: '14px 32px',
+              fontFamily: 'Space Grotesk',
+              fontSize: '14px',
+              letterSpacing: '0.1em',
+              cursor: 'pointer',
+              borderRadius: '30px',
+              transition: 'all 0.3s ease',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}>
+              VIEW PROJECTS
+              <span style={{ fontSize: '16px' }}>→</span>
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );
