@@ -206,16 +206,7 @@ export default function FinalCTA() {
         alignItems: 'center',
         gap: '60px',
       }}>
-        {isRevealed && (
-          <div style={{ overflow: 'hidden' }}>
-            <p className="text-system" style={{
-              color: 'rgba(0,212,255,0.4)',
-              marginBottom: '40px',
-            }}>
-              — THE NEXT CHAPTER
-            </p>
-          </div>
-        )}
+
 
         <h2
           ref={headlineRef}
