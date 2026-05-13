@@ -16,7 +16,7 @@ const faqs = [
     answer: "Absolutely. Every experience we build is 100% responsive, meaning it will look pixel-perfect and perform flawlessly on smartphones, tablets, and desktop computers alike."
   },
   {
-    question: "What is the ₹2,999 starting price for?",
+    question: "What is the ₹5,999 starting price for?",
     answer: "Our ₹5,999 package is designed for rapid deployment of a single-page, high-converting professional professional landing page. It's perfect for small businesses or portfolios looking to establish immediate, premium digital trust."
   },
   {
