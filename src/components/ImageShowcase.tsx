@@ -64,6 +64,17 @@ export default function ImageShowcase() {
           },
         }
       );
+
+      gsap.to('.marquee-track', {
+        xPercent: -50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
     }, section);
 
     return () => ctx.revert();
@@ -86,28 +97,28 @@ export default function ImageShowcase() {
           display: flex;
           gap: 32px;
           width: max-content;
-          animation: marquee 35s linear infinite;
-        }
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .marquee-track:hover {
-          animation-play-state: paused;
+          will-change: transform;
         }
         .testimonial-card {
-          background: linear-gradient(135deg, #060606 0%, #020202 100%);
-          border: 1px solid rgba(255,255,255,0.03);
+          background: rgba(10, 10, 10, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
           padding: clamp(16px, 4vw, 32px);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          width: clamp(220px, 70vw, 360px);
+          width: clamp(260px, 70vw, 400px);
           min-height: 220px;
           position: relative;
           overflow: hidden;
-          border-radius: 16px;
+          border-radius: 12px;
           flex-shrink: 0;
+          transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .testimonial-card:hover {
+          border-color: rgba(0, 212, 255, 0.2);
+          background: rgba(15, 15, 15, 0.9);
+        }
           transition: border-color 0.4s ease, transform 0.4s ease;
         }
         .testimonial-card:hover {
@@ -147,8 +158,8 @@ export default function ImageShowcase() {
           lineHeight: 1.05,
           color: '#ffffff',
         }}>
-          WHAT OUR CLIENTS<br />
-          <span style={{ color: 'rgba(255,255,255,0.25)' }}>SAY ABOUT US.</span>
+          ENGINEERED TRUST.<br />
+          <span style={{ color: 'rgba(255,255,255,0.25)' }}>POST-LAUNCH IMPACT.</span>
         </h2>
       </div>
 
@@ -157,91 +168,125 @@ export default function ImageShowcase() {
         <div className="marquee-track">
           {/* First set of cards */}
           {testimonials.map((t, i) => (
-            <div key={`set1-${i}`} className="testimonial-card" style={{ background: `${t.bgColor}B3` }}>
-              <div className="quote-bg">“</div>
+            <div key={`set1-${i}`} className="testimonial-card">
+              {/* Subtle edge lighting */}
               <div style={{
                 position: 'absolute',
                 top: 0, left: 0, right: 0,
                 height: '1px',
-                background: `linear-gradient(90deg, ${t.accent}, transparent)`,
-                opacity: 0.2,
+                background: 'linear-gradient(90deg, rgba(0,212,255,0.2), transparent)',
               }} />
+              
+              {/* Tiny technical label */}
+              <div style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: '10px',
+                color: 'rgba(255,255,255,0.25)',
+                letterSpacing: '0.1em',
+                marginBottom: '16px',
+                textTransform: 'uppercase',
+              }}>
+                SYSTEM SIGNAL // 0{i + 1}
+              </div>
+
               <p style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontSize: '15px',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.6,
-                color: '#ffffff',
+                color: 'rgba(255,255,255,0.85)',
                 position: 'relative',
                 zIndex: 2,
               }}>
                 "{t.quote}"
               </p>
-              <div style={{ marginTop: 'auto', position: 'relative', zIndex: 2 }}>
-                <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '14px',
-                  fontWeight: 400,
-                  color: '#ffffff',
-                  marginBottom: '4px',
-                }}>
-                  {t.author}
-                </p>
-                <p style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 400,
-                  letterSpacing: '0.05em',
-                  color: 'rgba(255,255,255,0.7)',
-                  textTransform: 'uppercase',
-                }}>
-                  {t.role}
-                </p>
+              
+              <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '24px' }}>
+                <div style={{ width: '24px', height: '1px', background: 'rgba(255,255,255,0.1)' }} />
+                <div>
+                  <p style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    color: '#ffffff',
+                    letterSpacing: '0.02em',
+                  }}>
+                    {t.author}
+                  </p>
+                  <p style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontSize: '10px',
+                    fontWeight: 400,
+                    letterSpacing: '0.05em',
+                    color: 'rgba(255,255,255,0.4)',
+                    textTransform: 'uppercase',
+                    marginTop: '2px',
+                  }}>
+                    {t.role}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
           {/* Duplicate set for seamless loop */}
           {testimonials.map((t, i) => (
-            <div key={`set2-${i}`} className="testimonial-card" style={{ background: `${t.bgColor}B3` }}>
-              <div className="quote-bg">“</div>
+            <div key={`set2-${i}`} className="testimonial-card">
+              {/* Subtle edge lighting */}
               <div style={{
                 position: 'absolute',
                 top: 0, left: 0, right: 0,
                 height: '1px',
-                background: `linear-gradient(90deg, ${t.accent}, transparent)`,
-                opacity: 0.2,
+                background: 'linear-gradient(90deg, rgba(0,212,255,0.2), transparent)',
               }} />
+              
+              {/* Tiny technical label */}
+              <div style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: '10px',
+                color: 'rgba(255,255,255,0.25)',
+                letterSpacing: '0.1em',
+                marginBottom: '16px',
+                textTransform: 'uppercase',
+              }}>
+                SYSTEM SIGNAL // 0{i + 1}
+              </div>
+
               <p style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontSize: '15px',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.6,
-                color: '#ffffff',
+                color: 'rgba(255,255,255,0.85)',
                 position: 'relative',
                 zIndex: 2,
               }}>
                 "{t.quote}"
               </p>
-              <div style={{ marginTop: 'auto', position: 'relative', zIndex: 2 }}>
-                <p style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '14px',
-                  fontWeight: 400,
-                  color: '#ffffff',
-                  marginBottom: '4px',
-                }}>
-                  {t.author}
-                </p>
-                <p style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '11px',
-                  fontWeight: 400,
-                  letterSpacing: '0.05em',
-                  color: 'rgba(255,255,255,0.7)',
-                  textTransform: 'uppercase',
-                }}>
-                  {t.role}
-                </p>
+              
+              <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '24px' }}>
+                <div style={{ width: '24px', height: '1px', background: 'rgba(255,255,255,0.1)' }} />
+                <div>
+                  <p style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    color: '#ffffff',
+                    letterSpacing: '0.02em',
+                  }}>
+                    {t.author}
+                  </p>
+                  <p style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontSize: '10px',
+                    fontWeight: 400,
+                    letterSpacing: '0.05em',
+                    color: 'rgba(255,255,255,0.4)',
+                    textTransform: 'uppercase',
+                    marginTop: '2px',
+                  }}>
+                    {t.role}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
