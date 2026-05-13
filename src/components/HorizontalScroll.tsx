@@ -202,8 +202,8 @@ export default function HorizontalScroll() {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: `+=${scrollDistance * 2 + 1500}`, // Multiplied scroll distance to make horizontal scroll slower and more reliable
-          scrub: 2, // Increased for a more delayed, smooth catch-up
+          end: `+=${scrollDistance * 3 + 2500}`, // Increased to make horizontal scroll slower and more impactful
+          scrub: 3, // Increased for a more delayed, ultra-smooth catch-up
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
