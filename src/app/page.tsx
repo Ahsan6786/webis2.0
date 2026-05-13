@@ -29,11 +29,11 @@ export default function Home() {
         {/* SECTION 4 — Services Showcase */}
         <ShowcaseSection />
 
-        {/* SECTION 5 — Engineering Performance */}
-        <PerformanceDashboard />
-
-        {/* SECTION 6 — Project Browser */}
+        {/* SECTION 5 — Project Browser */}
         <ProjectBrowser />
+
+        {/* SECTION 6 — Engineering Performance */}
+        <PerformanceDashboard />
 
         {/* SECTION 7 — Immersive Image Showcase (Testimonials) */}
         <ImageShowcase />
