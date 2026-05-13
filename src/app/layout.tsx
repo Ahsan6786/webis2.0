@@ -47,8 +47,8 @@ export default function RootLayout({
           top: '-25%', left: '-25%',
           width: '150vw', height: '150vh',
           background: `
-            radial-gradient(ellipse 50% 30% at 20% 40%, rgba(0,212,255,0.06) 0%, rgba(0,212,255,0.02) 40%, transparent 70%),
-            radial-gradient(ellipse 40% 25% at 80% 60%, rgba(0,120,200,0.08) 0%, rgba(0,120,200,0.03) 35%, transparent 60%)
+            radial-gradient(ellipse 60% 40% at 30% 60%, rgba(0,212,255,0.08) 0%, rgba(0,212,255,0.03) 30%, transparent 60%),
+            radial-gradient(ellipse 40% 30% at 70% 40%, rgba(0,120,200,0.1) 0%, rgba(0,120,200,0.04) 25%, transparent 50%)
           `,
           pointerEvents: 'none',
           zIndex: 0,
