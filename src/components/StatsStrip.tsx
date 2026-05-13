@@ -21,6 +21,8 @@ export default function StatsStrip() {
     const ctx = gsap.context(() => {
       itemRefs.current.forEach((el, i) => {
         if (!el) return;
+        
+        // Fade in
         gsap.fromTo(el,
           { opacity: 0, y: 30 },
           {
@@ -34,6 +36,30 @@ export default function StatsStrip() {
             delay: i * 0.1,
           }
         );
+
+        // Count up for numbers
+        const valEl = el.querySelector('.stat-value');
+        if (valEl) {
+          const rawValue = stats[i].value;
+          const numericValue = parseFloat(rawValue.replace(/[^0-9.]/g, ''));
+          
+          if (!isNaN(numericValue)) {
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: numericValue,
+              duration: 2,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+              },
+              onUpdate: () => {
+                const suffix = rawValue.replace(/[0-9.]/g, '');
+                valEl.textContent = Math.floor(obj.val) + suffix;
+              }
+            });
+          }
+        }
       });
     }, sectionRef.current!);
     return () => ctx.revert();
@@ -54,6 +80,12 @@ export default function StatsStrip() {
         overflow: 'hidden',
       }}
     >
+      <style>{`
+        @keyframes float-subtle {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+      `}</style>
       {/* Subtle background */}
       <div style={{
         position: 'absolute', inset: 0,
@@ -72,9 +104,11 @@ export default function StatsStrip() {
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
+            animation: `float-subtle 4s ease-in-out infinite`,
+            animationDelay: `${i * 0.5}s`,
           }}
         >
-          <span style={{
+          <span className="stat-value" style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: 'clamp(32px, 4vw, 64px)',
             fontWeight: 100,
