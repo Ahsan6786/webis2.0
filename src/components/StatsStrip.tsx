@@ -70,12 +70,10 @@ export default function StatsStrip() {
       ref={sectionRef}
       style={{
         background: '#000000',
-        borderTop: '1px solid rgba(255,255,255,0.04)',
-        borderBottom: '1px solid rgba(255,255,255,0.04)',
         padding: 'clamp(48px, 8vh, 80px) clamp(24px, 6vw, 96px)',
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '2px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+        gap: '24px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -98,9 +96,10 @@ export default function StatsStrip() {
           key={stat.label}
           ref={el => { itemRefs.current[i] = el; }}
           style={{
-            opacity: 0,
-            padding: 'clamp(24px, 3vw, 48px) clamp(16px, 2vw, 32px)',
-            borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+            padding: '40px',
+            background: '#0a0a0a',
+            border: '1px solid rgba(255,255,255,0.05)',
+            borderRadius: '12px',
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
