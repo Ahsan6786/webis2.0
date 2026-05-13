@@ -21,7 +21,7 @@ export default function ProjectBrowser() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section style={{ padding: '100px 24px', background: 'rgba(3, 5, 8, 0.5)', position: 'relative' }}>
+    <section style={{ padding: '100px 24px', background: 'transparent', position: 'relative' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center' }}>
           <h2 style={{

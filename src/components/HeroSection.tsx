@@ -28,16 +28,7 @@ export default function HeroSection() {
       }}
     >
       {/* Static atmospheric layers — no animation, no twinkling */}
-      {/* Deep radial glow — fixed, subtle */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: `
-          radial-gradient(ellipse 60% 40% at 30% 60%, rgba(0,212,255,0.08) 0%, transparent 50%),
-          radial-gradient(ellipse 40% 30% at 70% 40%, rgba(0,80,120,0.1) 0%, transparent 45%)
-        `,
-        pointerEvents: 'none',
-      }} />
+      {/* Deep radial glow removed to use global gradient from layout.tsx */}
 
       {/* Hairline horizontal rule */}
       <div style={{
