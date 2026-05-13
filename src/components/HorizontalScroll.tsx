@@ -232,14 +232,17 @@ export default function HorizontalScroll() {
           // Set initial state for hidden messages
           gsap.set(msg, { opacity: 0, y: 20 });
           
+          const dur = i === 1 ? 2.0 : 0.8; // Slower transition for the first one
+          const delay = i === 1 ? '+=1.0' : '+=0.3'; // Longer delay before fade in for the first one
+          
           // Fade out previous message
-          tl.to(msgs[i-1], { opacity: 0, y: -20, filter: 'blur(5px)', duration: 0.8, ease: 'power2.inOut' });
+          tl.to(msgs[i-1], { opacity: 0, y: -20, filter: 'blur(5px)', duration: dur, ease: 'power2.inOut' });
           
           // Fade in current message
-          tl.to(msg, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out' }, '+=0.3');
+          tl.to(msg, { opacity: 1, y: 0, filter: 'blur(0px)', duration: dur, ease: 'power2.out' }, delay);
           
           // Hold current message
-          tl.to({}, { duration: 1.5 });
+          tl.to({}, { duration: i === 1 ? 2.5 : 1.5 });
         }
           
           // Change background color of the panel
