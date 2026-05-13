@@ -244,7 +244,6 @@ export default function HorizontalScroll() {
           
           // Change background color of the panel
           tl.to('#dim-projects', { backgroundColor: bgColors[i], duration: 0.5, ease: 'power2.out' }, '<');
-        }
       });
 
       // ── Text reveal for the first panel ──
