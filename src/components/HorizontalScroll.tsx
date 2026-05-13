@@ -211,7 +211,7 @@ export default function HorizontalScroll() {
       });
 
       // Hold the first panel/message for a bit
-      tl.to({}, { duration: 1.5 });
+      tl.to({}, { duration: 3.5 });
 
       // Translate to the end (where the stacked container fills the screen)
       tl.to(panelsEl, {
@@ -222,7 +222,7 @@ export default function HorizontalScroll() {
 
       // Text Sequence Animation (In-Place)
       const msgs = gsap.utils.toArray('[data-msg-idx]') as any[];
-      const bgColors = ['#050505', '#0a192f', '#1a0b2e', '#0b1c1c'];
+      const bgColors = ['#030303', '#0a3a1e', '#004a66', '#1a0a3a'];
       
       // Center all messages horizontally using GSAP
       gsap.set(msgs, { xPercent: -50 });
