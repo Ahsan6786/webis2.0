@@ -178,7 +178,7 @@ export default function ShowcaseSection() {
       ref={sectionRef}
       id="showcase"
       style={{
-        background: 'var(--black)',
+        background: 'rgba(3, 5, 8, 0.5)',
         padding: 'clamp(80px, 12vh, 160px) 0',
         position: 'relative',
         overflow: 'hidden',

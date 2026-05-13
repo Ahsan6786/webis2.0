@@ -46,7 +46,10 @@ export default function RootLayout({
           position: 'fixed',
           top: '-25%', left: '-25%',
           width: '150vw', height: '150vh',
-          background: 'radial-gradient(circle at center, rgba(0,212,255,0.08) 0%, rgba(0,80,120,0.03) 50%, transparent 70%)',
+          background: `
+            radial-gradient(ellipse 60% 40% at 30% 60%, rgba(0,212,255,0.08) 0%, transparent 50%),
+            radial-gradient(ellipse 40% 30% at 70% 40%, rgba(0,80,120,0.1) 0%, transparent 45%)
+          `,
           pointerEvents: 'none',
           zIndex: 0,
           animation: 'gradientMove 25s ease-in-out infinite',
