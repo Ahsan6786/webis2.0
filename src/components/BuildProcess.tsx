@@ -37,9 +37,9 @@ const steps = [
   },
   {
     id: 'step-launch',
-    label: 'LAUNCH',
+    label: 'PERFECTION',
     index: 4,
-    desc: 'The moment precision meets the world. Controlled. Inevitable.',
+    desc: 'Our teams operate with obsessive precision. We deliver nothing short of absolute perfection.',
     x: 88, y: 55,
   },
 ];
