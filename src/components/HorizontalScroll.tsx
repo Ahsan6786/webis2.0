@@ -222,7 +222,7 @@ export default function HorizontalScroll() {
 
       // Text Sequence Animation (In-Place)
       const msgs = gsap.utils.toArray('[data-msg-idx]') as any[];
-      const bgColors = ['#030303', '#0a3a1e', '#004a66', '#1a0a3a'];
+      const bgColors = ['#050505', '#0a192f', '#1a0b2e', '#0b1c1c'];
       
       // Center all messages horizontally using GSAP
       gsap.set(msgs, { xPercent: -50 });
