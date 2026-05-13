@@ -194,8 +194,8 @@ export default function ShowcaseSection() {
             lineHeight: 1.05,
             color: '#ffffff',
           }}>
-            SERVICES WE<br />
-            <span style={{ color: 'rgba(255,255,255,0.3)' }}>PROVIDE.</span>
+            SYSTEMS WE<br />
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>ENGINEER.</span>
           </h2>
         </div>
       </div>
@@ -204,72 +204,73 @@ export default function ShowcaseSection() {
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '24px',
+        gap: '32px',
         padding: '0 clamp(24px, 6vw, 96px)',
-      }}>
+      }} className="modular-grid">
+        <style>{`
+          @media (min-width: 1024px) {
+            .modular-grid {
+              grid-template-columns: repeat(3, 1fr) !important;
+            }
+            .module-0 { grid-column: span 2; }
+            .module-3 { grid-column: span 2; }
+          }
+        `}</style>
         {showcaseItems.map((item, i) => (
           <div
             key={item.id}
+            className={`module-${i}`}
+            onMouseEnter={() => setHoveredIndex(i)}
+            onMouseLeave={() => setHoveredIndex(null)}
             style={{
-              background: '#0a0a0a',
+              background: 'rgba(10, 10, 10, 0.8)',
               border: '1px solid rgba(255,255,255,0.05)',
+              backdropFilter: 'blur(10px)',
               borderRadius: '12px',
               padding: '40px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              minHeight: '320px',
-              transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease',
-              cursor: 'pointer',
+              minHeight: i === 0 || i === 3 ? '360px' : '280px',
+              opacity: hoveredIndex !== null && hoveredIndex !== i ? 0.3 : 1,
+              transform: hoveredIndex === i ? 'scale(1.02)' : 'scale(1)',
+              transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
               position: 'relative',
               overflow: 'hidden',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-10px)';
-              e.currentTarget.style.borderColor = 'rgba(0,212,255,0.2)';
-              e.currentTarget.style.boxShadow = '0 20px 40px -20px rgba(0,0,0,0.7)';
-              const line = e.currentTarget.querySelector('.accent-line') as HTMLElement;
-              if (line) line.style.transform = 'scaleX(1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
-              e.currentTarget.style.boxShadow = 'none';
-              const line = e.currentTarget.querySelector('.accent-line') as HTMLElement;
-              if (line) line.style.transform = 'scaleX(0)';
+              cursor: 'pointer',
             }}
           >
-            {/* Accent light on hover */}
-            <div 
-              className="accent-line"
-              style={{
-                position: 'absolute',
-                top: 0, left: 0, right: 0,
-                height: '2px',
-                background: item.accent,
-                transform: 'scaleX(0)',
-                transition: 'transform 0.4s ease',
-              }} 
-            />
+            {/* Subtle edge lighting */}
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0,
+              height: '1px',
+              background: `linear-gradient(90deg, ${item.accent}, transparent)`,
+              opacity: hoveredIndex === i ? 0.4 : 0.1,
+              transition: 'opacity 0.5s ease',
+            }} />
 
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
                 <span style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '12px',
-                  letterSpacing: '0.2em',
-                  color: 'rgba(255,255,255,0.3)',
+                  fontSize: '11px',
+                  letterSpacing: '0.1em',
+                  color: 'rgba(255,255,255,0.4)',
                 }}>
-                  0{i + 1}
+                  MODULE // 0{i + 1}
                 </span>
                 <span style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: '11px',
+                  fontSize: '10px',
                   letterSpacing: '0.1em',
                   color: item.accent,
                   opacity: 0.8,
+                  border: `1px solid ${item.accent}`,
+                  padding: '2px 6px',
+                  borderRadius: '3px',
                 }}>
-                  {item.category}
+                  ACTIVE
                 </span>
               </div>
 
@@ -291,18 +292,25 @@ export default function ShowcaseSection() {
                 fontWeight: 300,
                 color: 'rgba(255,255,255,0.5)',
                 lineHeight: 1.6,
+                maxWidth: '400px',
               }}>
                 {item.desc}
               </p>
             </div>
 
             <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
               fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: '12px',
-              color: 'rgba(255,255,255,0.3)',
+              fontSize: '11px',
+              color: 'rgba(255,255,255,0.25)',
               letterSpacing: '0.05em',
+              paddingTop: '20px',
+              borderTop: '1px solid rgba(255,255,255,0.03)',
             }}>
-              {item.subtitle}
+              <span>{item.subtitle}</span>
+              <span>SYS.LOC // 00{i + 1}</span>
             </div>
           </div>
         ))}
