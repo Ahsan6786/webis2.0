@@ -151,7 +151,7 @@ export default function HeroSection() {
               }}
             >
               <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={38} suffix="+" /></span>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={55} suffix="+" /></span>
                 <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Projects Delivered</span>
               </div>
               <div style={{ textAlign: 'center' }}>
