@@ -60,12 +60,12 @@ export default function HeroSection() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '12px',
-                fontWeight: 500,
-                letterSpacing: '0.2em',
+                fontSize: '11px',
+                fontWeight: 300,
+                letterSpacing: '0.3em',
                 textTransform: 'uppercase',
-                color: '#00d4ff',
-                marginBottom: '16px',
+                color: 'rgba(255,255,255,0.4)',
+                marginBottom: '24px',
               }}
             >
               WEBIS
