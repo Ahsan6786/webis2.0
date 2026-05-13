@@ -15,6 +15,27 @@ import {
   Cell
 } from 'recharts';
 
+function CountUp({ end, duration = 1500, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const increment = end / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [end, duration]);
+
+  return <span>{count}{suffix}</span>;
+}
+
 // Mock data based on the image
 const growthData = [
   { name: 'Jan', value: 30 },
@@ -144,11 +165,10 @@ export default function PerformanceDashboard() {
           gap: '24px',
           marginBottom: '24px'
         }}>
-          {/* Stats Cards */}
-          <StatCard title="Projects Completed" value="55+" sub="Across 12 countries" />
-          <StatCard title="Fastest Delivery" value="5h" sub="Record turnaround" />
-          <StatCard title="Client Satisfaction" value="98%" sub="5-star rated" />
-          <StatCard title="Support Response" value="1hr" sub="Average response time" />
+          <StatCard title="Projects Completed" value={<CountUp end={55} suffix="+" />} sub="Across 12 countries" />
+          <StatCard title="Fastest Delivery" value={<CountUp end={5} suffix="h" />} sub="Record turnaround" />
+          <StatCard title="Client Satisfaction" value={<CountUp end={98} suffix="%" />} sub="5-star rated" />
+          <StatCard title="Support Response" value={<CountUp end={1} suffix="hr" />} sub="Average response time" />
         </div>
 
         <div className="large-charts-grid" style={{ 
@@ -250,7 +270,7 @@ export default function PerformanceDashboard() {
 }
 
 // Sub-components for clean structure
-function StatCard({ title, value, sub }: { title: string, value: string, sub: string }) {
+function StatCard({ title, value, sub }: { title: string, value: React.ReactNode, sub: string }) {
   return (
     <div style={{
       background: 'rgba(255,255,255,0.02)',

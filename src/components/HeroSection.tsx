@@ -3,6 +3,27 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+function CountUp({ end, duration = 1500, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const increment = end / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [end, duration]);
+
+  return <span>{count}{suffix}</span>;
+}
+
 export default function HeroSection() {
   const [phase, setPhase] = useState<'init' | 'system' | 'headline' | 'done'>('init');
 
@@ -130,15 +151,15 @@ export default function HeroSection() {
               }}
             >
               <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}>38+</span>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={38} suffix="+" /></span>
                 <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Projects Delivered</span>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}>98%</span>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={98} suffix="%" /></span>
                 <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Client Retention</span>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}>4YRS</span>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={4} suffix="YRS" /></span>
                 <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>In Operation</span>
               </div>
               <div style={{ textAlign: 'center' }}>
