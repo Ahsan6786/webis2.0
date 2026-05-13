@@ -35,24 +35,7 @@ const projects: any[] = [];
 
 function MotionVisual() {
   return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={i}
-          style={{
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
-            width: `${(i + 1) * 14}vw`,
-            height: '1px',
-            background: `linear-gradient(90deg, transparent, rgba(0,212,255,${0.1 - i * 0.012}), transparent)`,
-            transform: `translate(-50%, calc(-50% + ${(i - 2.5) * 55}px))`,
-            animation: `breathe ${2.5 + i * 0.4}s ease-in-out infinite`,
-            animationDelay: `${i * 0.35}s`,
-          }}
-        />
-      ))}
-    </div>
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }} />
   );
 }
 
