@@ -14,6 +14,8 @@ const ShowcaseSection = dynamic(() => import('@/components/ShowcaseSection'), { 
 const ProjectBrowser = dynamic(() => import('@/components/ProjectBrowser'), { ssr: false });
 const FinalCTA = dynamic(() => import('@/components/FinalCTA'), { ssr: false });
 const PerformanceDashboard = dynamic(() => import('@/components/PerformanceDashboard'), { ssr: false });
+const BlogSection = dynamic(() => import('@/components/BlogSection'), { ssr: false });
+const TeamSection = dynamic(() => import('@/components/TeamSection'), { ssr: false });
 const FAQSection = dynamic(() => import('@/components/FAQSection'), { ssr: false });
 
 export default function Home() {
@@ -43,7 +45,13 @@ export default function Home() {
         {/* SECTION 7 — Immersive Image Showcase (Testimonials) */}
         <ImageShowcase />
 
-        {/* SECTION 8 — FAQs */}
+        {/* SECTION 8 — Blogs */}
+        <BlogSection />
+
+        {/* SECTION 9 — Team */}
+        <TeamSection />
+
+        {/* SECTION 10 — FAQs */}
         <FAQSection />
 
         {/* SECTION 9 — Final CTA */}

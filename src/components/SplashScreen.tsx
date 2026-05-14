@@ -42,28 +42,17 @@ export default function SplashScreen() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             style={{ textAlign: 'center' }}
           >
-            <h1 style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: 'clamp(40px, 8vw, 120px)',
-              fontWeight: 800,
-              letterSpacing: '0.2em',
-              color: '#ffffff',
-              margin: 0,
-              textTransform: 'uppercase',
-            }}>
-              WEBIS
-            </h1>
-            <p style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: '12px',
-              color: '#00d4ff',
-              letterSpacing: '0.4em',
-              marginTop: '16px',
-              textTransform: 'uppercase',
-              opacity: 0.8
-            }}>
-              CRAFTING THE FUTURE
-            </p>
+            <img
+              src="/logo.png"
+              alt="WEBIS"
+              style={{
+                height: 'clamp(80px, 12vw, 160px)',
+                width: 'auto',
+                marginBottom: '24px',
+                display: 'inline-block',
+              }}
+            />
+
           </motion.div>
         </motion.div>
       )}

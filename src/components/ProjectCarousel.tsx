@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface Project {
   slug: string;
@@ -156,10 +157,12 @@ export default function ProjectCarousel({ projects, initialSlug }: ProjectCarous
                         <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }} />
                       </div>
                     )}
-                    <img
+                    <Image
                       src={`/projects/${project.slug}/${img}`}
                       alt={`${project.slug} screenshot`}
-                      loading={i === 0 ? "eager" : "lazy"}
+                      width={1200}
+                      height={800}
+                      priority={i === 0}
                       style={{ width: '100%', height: 'auto', display: 'block' }}
                     />
                   </div>

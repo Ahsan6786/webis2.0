@@ -15,7 +15,7 @@ const showcaseItems = [
     desc: 'We build high-converting, robust applications with modern stacks.',
     color: '#0a0a0f',
     accent: '#00d4ff',
-    gradient: 'radial-gradient(ellipse at 30% 60%, rgba(0,40,60,0.8) 0%, rgba(0,0,0,0) 60%)',
+    gradient: 'radial-gradient(ellipse at 30% 60%, rgba(0,100,150,0.9) 0%, rgba(0,0,0,0) 70%)',
   },
   {
     id: 'sc-2',
@@ -25,7 +25,7 @@ const showcaseItems = [
     desc: 'Dominate search rankings and optimize for maximum speed and conversion.',
     color: '#060608',
     accent: '#8888aa',
-    gradient: 'radial-gradient(ellipse at 70% 40%, rgba(30,20,60,0.7) 0%, rgba(0,0,0,0) 60%)',
+    gradient: 'radial-gradient(ellipse at 70% 40%, rgba(60,40,120,0.8) 0%, rgba(0,0,0,0) 70%)',
   },
   {
     id: 'sc-3',
@@ -35,7 +35,7 @@ const showcaseItems = [
     desc: 'Targeted campaigns that drive real-world impacts and growth.',
     color: '#040404',
     accent: '#ffffff',
-    gradient: 'radial-gradient(ellipse at 50% 50%, rgba(20,20,20,0.9) 0%, rgba(0,0,0,0) 70%)',
+    gradient: 'radial-gradient(ellipse at 50% 50%, rgba(40,40,40,1) 0%, rgba(0,0,0,0) 80%)',
   },
   {
     id: 'sc-4',
@@ -45,7 +45,7 @@ const showcaseItems = [
     desc: 'We manage and grow your social presence with engaging content.',
     color: '#080808',
     accent: '#00d4ff',
-    gradient: 'radial-gradient(ellipse at 30% 40%, rgba(0,40,60,0.6) 0%, rgba(0,0,0,0) 60%)',
+    gradient: 'radial-gradient(ellipse at 30% 40%, rgba(0,80,120,0.8) 0%, rgba(0,0,0,0) 70%)',
   },
 ];
 
@@ -248,7 +248,7 @@ export default function ShowcaseSection() {
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
             style={{
-              background: `${item.gradient}, rgba(10, 10, 10, 0.8)`,
+              background: `${item.gradient}, rgba(5, 5, 5, 0.95)`,
               border: '1px solid rgba(255,255,255,0.05)',
               backdropFilter: 'blur(10px)',
               borderRadius: '12px',

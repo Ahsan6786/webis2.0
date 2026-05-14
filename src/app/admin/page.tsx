@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { auth, db } from '@/lib/firebase';
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut, User } from 'firebase/auth';
-import { collection, getDocs, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
 
 interface Lead {
@@ -77,6 +77,18 @@ export default function AdminPage() {
       ));
     } catch (err) {
       console.error('Error updating lead status:', err);
+    }
+  };
+
+  const handleDelete = async (leadId: string) => {
+    if (!window.confirm('Are you sure you want to delete this inquiry?')) return;
+    try {
+      const leadRef = doc(db, 'leads', leadId);
+      await deleteDoc(leadRef);
+      setLeads(leads.filter(lead => lead.id !== leadId));
+    } catch (err) {
+      console.error('Error deleting lead:', err);
+      alert('Failed to delete lead. Check permissions.');
     }
   };
 
@@ -432,7 +444,35 @@ export default function AdminPage() {
                       </p>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '8px' }}>
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                      {/* Delete Button */}
+                      <button
+                        onClick={() => handleDelete(lead.id)}
+                        style={{
+                          background: 'rgba(255, 74, 74, 0.1)',
+                          border: 'none',
+                          color: '#ff4a4a',
+                          fontSize: '11px',
+                          cursor: 'pointer',
+                          padding: '4px 10px',
+                          borderRadius: '4px',
+                          fontFamily: 'Space Grotesk',
+                          letterSpacing: '0.05em',
+                          fontWeight: 500,
+                          transition: 'all 0.3s ease',
+                        }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.background = '#ff4a4a';
+                          e.currentTarget.style.color = '#ffffff';
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.background = 'rgba(255, 74, 74, 0.1)';
+                          e.currentTarget.style.color = '#ff4a4a';
+                        }}
+                      >
+                        DELETE
+                      </button>
+
                       {/* Source Tag */}
                       <span style={{ 
                         fontSize: '11px', 

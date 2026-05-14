@@ -127,8 +127,8 @@ export default function PerformanceDashboard() {
             gap: 12px !important;
           }
           .charts-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px !important;
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
           .large-charts-grid {
             grid-template-columns: 1fr !important;

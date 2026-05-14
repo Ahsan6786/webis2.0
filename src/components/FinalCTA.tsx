@@ -485,21 +485,24 @@ export default function FinalCTA() {
         }
       `}</style>
       <div className="footer-container" style={{
-        position: 'absolute',
-        bottom: '40px',
-        left: 0, right: 0,
-        padding: '20px clamp(24px, 6vw, 96px) 0',
+        marginTop: 'auto',
+        width: '100%',
+        padding: '30px clamp(24px, 6vw, 96px)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '20px',
         zIndex: 2,
         borderTop: '1px solid rgba(255,255,255,0.05)',
+        background: 'rgba(3, 5, 8, 0.8)',
+        backdropFilter: 'blur(10px)',
       }}>
         <span className="text-system" style={{ color: '#ffffff' }}>
           WEBIS STUDIO
         </span>
         <span className="text-system" style={{ color: '#ffffff' }}>
-          © 2025 — ALL RIGHTS RESERVED
+          © 2026 — ALL RIGHTS RESERVED
         </span>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

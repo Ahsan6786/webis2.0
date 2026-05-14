@@ -8,6 +8,7 @@ const navItems = [
   { label: 'OUR PRODUCTS', href: '/projects' },
   { label: 'WORK', href: '#showcase' },
   { label: 'PROCESS', href: '#process' },
+  { label: 'BLOGS', href: '/blogs' },
   { label: 'CONTACT', href: '#contact' },
 ];
 
@@ -84,22 +85,7 @@ export default function Navigation() {
             boxShadow: scrolled ? '0 10px 30px -10px rgba(0,0,0,0.5)' : 'none',
           }}
         >
-          <span style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '12px',
-            fontWeight: 500,
-            letterSpacing: '0.2em',
-            color: '#ffffff',
-            marginRight: '20px',
-          }}>
-            WB
-          </span>
 
-          <div style={{
-            width: '1px', height: '12px',
-            background: 'rgba(255,255,255,0.12)',
-            marginRight: '16px',
-          }} />
 
           {navItems.map((item) => (
             <button

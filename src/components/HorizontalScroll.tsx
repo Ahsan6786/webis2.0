@@ -21,7 +21,7 @@ const dimensions = [
     id: 'dim-projects',
     number: '02',
     label: 'WORK',
-    headline: 'FEATURED PROJECTS',
+    headline: 'OUR PRODUCTS',
     sub: 'Hover to explore depth.',
     accent: '#ffffff',
     bg: '#000000',
@@ -203,7 +203,7 @@ export default function HorizontalScroll() {
           trigger: section,
           start: 'top top',
           end: `+=${scrollDistance * 3 + 2500}`, // Increased to make horizontal scroll slower and more impactful
-          scrub: 1.5, // Smooth but responsive
+          scrub: 2.5, // Ultra smooth
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,

@@ -37,7 +37,7 @@ const steps = [
   },
   {
     id: 'step-launch',
-    label: 'PERFECTION',
+    label: 'LAUNCH',
     index: 4,
     desc: 'Our teams operate with obsessive precision. We deliver nothing short of absolute perfection.',
     x: 88, y: 55,
@@ -249,29 +249,12 @@ export default function BuildProcess() {
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
         {activeStep >= 0 && (
           <div style={{
-            background: 'rgba(255,255,255,0.01)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255,255,255,0.05)',
-            borderRadius: '12px',
-            padding: '32px 24px',
+            padding: '24px',
             textAlign: 'center',
             position: 'relative',
           }}>
-            {/* Corner accents */}
-            <div style={{ position: 'absolute', top: 0, left: 0, width: '12px', height: '12px', borderTop: '1px solid rgba(0,212,255,0.4)', borderLeft: '1px solid rgba(0,212,255,0.4)', borderTopLeftRadius: '12px' }} />
-            <div style={{ position: 'absolute', top: 0, right: 0, width: '12px', height: '12px', borderTop: '1px solid rgba(0,212,255,0.4)', borderRight: '1px solid rgba(0,212,255,0.4)', borderTopRightRadius: '12px' }} />
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '12px', height: '12px', borderBottom: '1px solid rgba(0,212,255,0.4)', borderLeft: '1px solid rgba(0,212,255,0.4)', borderBottomLeftRadius: '12px' }} />
-            <div style={{ position: 'absolute', bottom: 0, right: 0, width: '12px', height: '12px', borderBottom: '1px solid rgba(0,212,255,0.4)', borderRight: '1px solid rgba(0,212,255,0.4)', borderBottomRightRadius: '12px' }} />
 
-            {activeStep < 4 ? (
-              <p className="text-system" style={{ color: '#00d4ff', marginBottom: '8px', fontSize: '11px', letterSpacing: '0.2em', opacity: 0.8 }}>
-                PHASE {String(activeStep + 1).padStart(2, '0')}
-              </p>
-            ) : (
-              <p className="text-system" style={{ color: '#00d4ff', marginBottom: '8px', fontSize: '11px', letterSpacing: '0.2em', opacity: 0.8 }}>
-                LAUNCH
-              </p>
-            )}
+
             <h3 style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '24px',

@@ -34,7 +34,7 @@ export default function ProjectBrowser() {
             marginBottom: '32px',
             textTransform: 'uppercase',
           }}>
-            PROJECTS
+            OUR PRODUCTS
           </h2>
 
           <Link href="/projects/blingish" style={{ textDecoration: 'none' }}>

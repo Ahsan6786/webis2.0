@@ -67,8 +67,9 @@ export default function FAQSection() {
               <div 
                 key={i}
                 style={{
-                  background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.05)',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   transition: 'all 0.3s ease',
@@ -116,7 +117,7 @@ export default function FAQSection() {
                     padding: '24px',
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: '14px',
-                    color: '#ffffff',
+                    color: 'rgba(255,255,255,0.7)',
                     lineHeight: 1.6,
                     borderTop: '1px solid rgba(255,255,255,0.03)',
                   }}>
