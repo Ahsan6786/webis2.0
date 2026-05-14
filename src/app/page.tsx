@@ -3,6 +3,8 @@
 import dynamic from 'next/dynamic';
 
 import HeroSection from '@/components/HeroSection';
+import Navigation from '@/components/Navigation';
+import SplashScreen from '@/components/SplashScreen';
 
 // Lazy load heavy components
 const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'), { ssr: false });
@@ -17,6 +19,8 @@ const FAQSection = dynamic(() => import('@/components/FAQSection'), { ssr: false
 export default function Home() {
   return (
     <>
+      <SplashScreen />
+      <Navigation />
       <main>
         {/* SECTION 1 — Hero / Opening */}
         <HeroSection />

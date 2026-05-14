@@ -38,22 +38,31 @@ export default function ProjectBrowser() {
           </h2>
 
           <Link href="/projects/blingish" style={{ textDecoration: 'none' }}>
-            <button style={{
-              background: 'rgba(0,212,255,0.05)',
-              border: '1px solid rgba(0,212,255,0.3)',
-              color: '#00d4ff',
-              padding: '14px 32px',
-              fontFamily: 'Space Grotesk',
-              fontSize: '14px',
-              letterSpacing: '0.1em',
-              cursor: 'pointer',
-              borderRadius: '30px',
-              transition: 'all 0.3s ease',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}>
-              VIEW PROJECTS
+            <button
+              style={{
+                background: '#ffffff',
+                border: 'none',
+                color: '#030508',
+                padding: '14px 32px',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px',
+                fontWeight: 500,
+                letterSpacing: '0.1em',
+                cursor: 'pointer',
+                borderRadius: '30px',
+                transition: 'all 0.3s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#00d4ff';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = '#ffffff';
+              }}
+            >
+              VIEW PRODUCTS
               <span style={{ fontSize: '16px' }}>→</span>
             </button>
           </Link>

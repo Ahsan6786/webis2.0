@@ -1,39 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-function CountUp({ end, duration = 1500, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const increment = end / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [end, duration]);
-
-  return <span>{count}{suffix}</span>;
-}
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
-  const [phase, setPhase] = useState<'init' | 'system' | 'headline' | 'done'>('init');
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setPhase('system'), 200);
-    const t2 = setTimeout(() => setPhase('headline'), 1000);
-    const t3 = setTimeout(() => setPhase('done'), 2000);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-  }, []);
-
   return (
     <section
       id="hero"
@@ -41,134 +10,99 @@ export default function HeroSection() {
         position: 'relative',
         width: '100vw',
         height: '100vh',
-        background: 'transparent',
+        background: 'radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.25) 0%, #030508 60%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
       }}
     >
-      {/* Static atmospheric layers — no animation, no twinkling */}
-      {/* Deep radial glow removed to use global gradient from layout.tsx */}
-
-      {/* Hairline horizontal rule */}
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '6vw', right: '6vw',
-        height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.035) 30%, rgba(255,255,255,0.035) 70%, transparent)',
-        pointerEvents: 'none',
-      }} />
-
       {/* Main headline and content */}
-      <motion.div layout style={{ textAlign: 'center', position: 'relative', zIndex: 2, padding: '0 24px' }}>
-        <AnimatePresence>
-          {(phase === 'system' || phase === 'headline' || phase === 'done') && (
-            <motion.p
-              key="brand"
-              initial={{ opacity: 0, y: 0, scale: 4 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '11px',
-                fontWeight: 300,
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.4)',
-                marginBottom: '24px',
-              }}
-            >
-              WEBIS
-            </motion.p>
-          )}
-        </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        style={{ textAlign: 'center', position: 'relative', zIndex: 2, padding: '0 24px' }}
+      >
+        <p
+          style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '12px',
+            fontWeight: 500,
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            color: '#ffffff',
+            marginBottom: '24px',
+            opacity: 0.6,
+          }}
+        >
+          WEBIS
+        </p>
 
-        <AnimatePresence>
-          {(phase === 'headline' || phase === 'done') && (
-            <motion.h1
-              layout
-              key="headline"
-              initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: 'clamp(36px, 6.5vw, 100px)',
-                fontWeight: 300,
-                lineHeight: 1.05,
-                letterSpacing: '-0.02em',
-                color: '#ffffff',
-                maxWidth: '900px',
-                margin: '0 auto',
-              }}
-            >
-              DIGITAL EXPERIENCES
-              <br />
-              <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 300 }}>
-                SHOULD FEEL ALIVE.
-              </span>
-            </motion.h1>
-          )}
-        </AnimatePresence>
+        <h1
+          style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 'clamp(36px, 6.5vw, 100px)',
+            fontWeight: 700,
+            lineHeight: 1.05,
+            letterSpacing: '-0.02em',
+            color: '#ffffff',
+            maxWidth: '900px',
+            margin: '0 auto',
+          }}
+        >
+          DIGITAL EXPERIENCES
+          <br />
+          SHOULD FEEL ALIVE.
+        </h1>
 
-        <AnimatePresence>
-          {phase === 'done' && (
-            <motion.p
-              key="sub"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                marginTop: '32px',
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(13px, 1.4vw, 16px)',
-                fontWeight: 300,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.28)',
-              }}
-            >
-              Digital Engineering Studio
-            </motion.p>
-          )}
-        </AnimatePresence>
+        <p
+          style={{
+            marginTop: '32px',
+            fontFamily: 'Inter, sans-serif',
+            fontSize: 'clamp(14px, 1.4vw, 18px)',
+            fontWeight: 300,
+            letterSpacing: '0.05em',
+            color: '#ffffff',
+            opacity: 0.8,
+          }}
+        >
+          We engineer digital experiences that feel alive.
+        </p>
 
-        {/* Stats in Center */}
-        <AnimatePresence>
-          {phase === 'done' && (
-            <motion.div
-              key="stats"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                marginTop: '64px',
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 'clamp(24px, 5vw, 64px)',
-              }}
-            >
-              <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={55} suffix="+" /></span>
-                <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Projects Delivered</span>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={98} suffix="%" /></span>
-                <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Client Retention</span>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}><CountUp end={4} suffix="YRS" /></span>
-                <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>In Operation</span>
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(24px, 3.5vw, 48px)', fontWeight: 300, color: '#ffffff', display: 'block', lineHeight: 1 }}>∞</span>
-                <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '10px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Lines of Intent</span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div style={{ marginTop: '48px' }}>
+          <a
+            href="#showcase"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '16px',
+              padding: '14px 40px',
+              background: '#ffffff',
+              color: '#030508',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '13px',
+              fontWeight: 500,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              borderRadius: '100px',
+              cursor: 'pointer',
+              transition: 'transform 0.3s ease, background 0.3s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = '#00d4ff';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = '#ffffff';
+              e.currentTarget.style.transform = 'translateY(0px)';
+            }}
+          >
+            Explore Work
+            <span style={{ width: '18px', height: '1px', background: '#030508', display: 'inline-block' }}></span>
+          </a>
+        </div>
       </motion.div>
     </section>
   );

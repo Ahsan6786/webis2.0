@@ -153,11 +153,12 @@ export default function PerformanceDashboard() {
           <p style={{
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: '16px',
-            color: 'rgba(255,255,255,0.5)',
+            color: 'rgba(255,255,255,0.7)',
             maxWidth: '600px',
-            margin: '0 auto'
+            margin: '0 auto',
+            lineHeight: 1.6
           }}>
-            Real-time data visualization of our system architecture and delivery efficiency.
+            We measure our success by the reliability of our systems and the growth of our partners. Here is a look at our live performance metrics.
           </p>
         </div>
 
@@ -168,7 +169,7 @@ export default function PerformanceDashboard() {
           gap: '24px',
           marginBottom: '24px'
         }}>
-          <StatCard title="Projects Completed" value={<CountUp end={55} suffix="+" />} sub="Across 12 countries" />
+          <StatCard title="Products Launched" value={<CountUp end={55} suffix="+" />} sub="Across 12 countries" />
           <StatCard title="Fastest Delivery" value={<CountUp end={5} suffix="h" />} sub="Record turnaround" />
           <StatCard title="Client Satisfaction" value={<CountUp end={98} suffix="%" />} sub="5-star rated" />
           <StatCard title="Support Response" value={<CountUp end={1} suffix="hr" />} sub="Average response time" />

@@ -121,7 +121,7 @@ export default function BuildProcess() {
           color: '#ffffff',
         }}>
           HOW WE<br />
-          <span style={{ color: 'rgba(255,255,255,0.3)' }}>ENGINEER.</span>
+          <span style={{ color: '#ffffff' }}>ENGINEER.</span>
         </h2>
       </div>
 
@@ -233,7 +233,7 @@ export default function BuildProcess() {
                     fontSize: '10px',
                     fontWeight: 400,
                     letterSpacing: '0.3em',
-                    fill: isActive ? '#00d4ff' : 'rgba(255,255,255,0.25)',
+                    fill: isActive ? '#00d4ff' : '#ffffff',
                     transition: 'fill 0.5s ease',
                   }}
                 >
@@ -286,7 +286,7 @@ export default function BuildProcess() {
               fontFamily: 'Space Grotesk, sans-serif',
               fontSize: '14px',
               fontWeight: 300,
-              color: 'rgba(255,255,255,0.6)',
+              color: '#ffffff',
               lineHeight: 1.6,
             }}>
               {steps[activeStep]?.desc}

@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leads/{leadId} {
+      // Allow anyone to create a lead (submit the form)
+      allow create: if true;
+      
+      // Only allow the specific admin user to read, update, or delete leads
+      allow read, update, delete: if request.auth != null && request.auth.token.email == 'ahsanimamkhan06@gmail.com';
+    }
+    
+    match /analytics/{docId} {
+      // Only allow admin to read analytics data
+      allow read: if request.auth != null && request.auth.token.email == 'ahsanimamkhan06@gmail.com';
+      
+      // Allow anyone to update analytics (e.g., increment view count)
+      allow create, update: if true;
+    }
+  }
+}

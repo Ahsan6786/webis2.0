@@ -52,7 +52,7 @@ export default function FAQSection() {
           <p style={{
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: '16px',
-            color: 'rgba(255,255,255,0.5)',
+            color: '#ffffff',
             maxWidth: '600px',
             margin: '0 auto'
           }}>
@@ -116,7 +116,7 @@ export default function FAQSection() {
                     padding: '24px',
                     fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: '14px',
-                    color: 'rgba(255,255,255,0.6)',
+                    color: '#ffffff',
                     lineHeight: 1.6,
                     borderTop: '1px solid rgba(255,255,255,0.03)',
                   }}>

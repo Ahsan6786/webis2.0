@@ -210,7 +210,7 @@ export default function ShowcaseSection() {
             color: '#ffffff',
           }}>
             SYSTEMS WE<br />
-            <span style={{ color: 'rgba(255,255,255,0.3)' }}>ENGINEER.</span>
+            <span style={{ color: '#ffffff' }}>ENGINEER.</span>
           </h2>
         </div>
       </div>
@@ -235,6 +235,10 @@ export default function ShowcaseSection() {
               opacity: 1 !important;
               transform: none !important;
             }
+            .card-desc {
+              opacity: 1 !important;
+              transform: none !important;
+            }
           }
         `}</style>
         {showcaseItems.map((item, i) => (
@@ -244,7 +248,7 @@ export default function ShowcaseSection() {
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
             style={{
-              background: 'rgba(10, 10, 10, 0.8)',
+              background: `${item.gradient}, rgba(10, 10, 10, 0.8)`,
               border: '1px solid rgba(255,255,255,0.05)',
               backdropFilter: 'blur(10px)',
               borderRadius: '12px',
@@ -253,8 +257,8 @@ export default function ShowcaseSection() {
               flexDirection: 'column',
               justifyContent: 'space-between',
               minHeight: i === 0 || i === 3 ? '360px' : '280px',
-              opacity: hoveredIndex !== null && hoveredIndex !== i ? 0.3 : 1,
-              transform: hoveredIndex === i ? 'scale(1.02)' : 'scale(1)',
+              opacity: hoveredIndex !== null && hoveredIndex !== i ? 0.5 : 1,
+              transform: hoveredIndex === i ? 'translateY(-5px)' : 'translateY(0)',
               transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
               position: 'relative',
               overflow: 'hidden',
@@ -267,33 +271,45 @@ export default function ShowcaseSection() {
               top: 0, left: 0, right: 0,
               height: '1px',
               background: `linear-gradient(90deg, ${item.accent}, transparent)`,
-              opacity: hoveredIndex === i ? 0.4 : 0.1,
+              opacity: hoveredIndex === i ? 0.8 : 0.2,
               transition: 'opacity 0.5s ease',
             }} />
 
             <div>
-              <div style={{ marginBottom: '32px' }}>
+              <div style={{ marginBottom: '16px' }}>
+                <span style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontSize: '11px',
+                  color: item.accent,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                }}>
+                  {item.category}
+                </span>
               </div>
 
               <h3 style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '28px',
-                fontWeight: 400,
+                fontSize: '24px',
+                fontWeight: 600,
                 color: '#ffffff',
-                marginBottom: '12px',
+                marginBottom: '16px',
                 letterSpacing: '-0.01em',
                 lineHeight: 1.2,
               }}>
                 {item.title}
               </h3>
               
-              <p style={{
-                fontFamily: 'Space Grotesk, sans-serif',
+              <p className="card-desc" style={{
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '14px',
                 fontWeight: 300,
-                color: 'rgba(255,255,255,0.5)',
+                color: 'rgba(255,255,255,0.7)',
                 lineHeight: 1.6,
                 maxWidth: '400px',
+                opacity: hoveredIndex === i ? 1 : 0,
+                transform: hoveredIndex === i ? 'translateY(0)' : 'translateY(10px)',
+                transition: 'opacity 0.4s ease, transform 0.4s ease',
               }}>
                 {item.desc}
               </p>
@@ -305,12 +321,12 @@ export default function ShowcaseSection() {
               alignItems: 'center',
               fontFamily: 'Space Grotesk, sans-serif',
               fontSize: '11px',
-              color: 'rgba(255,255,255,0.25)',
+              color: '#ffffff',
               letterSpacing: '0.05em',
               paddingTop: '20px',
-              borderTop: '1px solid rgba(255,255,255,0.03)',
+              borderTop: '1px solid rgba(255,255,255,0.05)',
             }}>
-              <span>{item.subtitle}</span>
+              <span style={{ opacity: 0.6 }}>{item.subtitle}</span>
             </div>
           </div>
         ))}

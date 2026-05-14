@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navigation from "@/components/Navigation";
+import LeadPopup from "@/components/LeadPopup";
 
 export const metadata: Metadata = {
   title: "WEBIS — Digital Engineering Studio",

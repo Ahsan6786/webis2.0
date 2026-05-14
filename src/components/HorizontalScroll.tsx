@@ -14,7 +14,7 @@ const dimensions = [
     headline: 'Every project is a system,\nnot just a website.',
     sub: 'Movement communicates. Every transition carries meaning.',
     accent: '#00d4ff',
-    bg: 'transparent',
+    bg: '#000000',
     content: 'motion' as const,
   },
   {
@@ -24,7 +24,7 @@ const dimensions = [
     headline: 'FEATURED PROJECTS',
     sub: 'Hover to explore depth.',
     accent: '#ffffff',
-    bg: 'transparent',
+    bg: '#000000',
     content: 'projects' as const,
   },
 ];
@@ -116,7 +116,7 @@ function ProjectsVisual() {
               <p style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontSize: '12px',
-                color: 'rgba(255,255,255,0.5)',
+                color: '#ffffff',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em'
               }}>
@@ -203,15 +203,15 @@ export default function HorizontalScroll() {
           trigger: section,
           start: 'top top',
           end: `+=${scrollDistance * 3 + 2500}`, // Increased to make horizontal scroll slower and more impactful
-          scrub: 3, // Increased for a more delayed, ultra-smooth catch-up
+          scrub: 1.5, // Smooth but responsive
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      // Hold the first panel/message for a bit
-      tl.to({}, { duration: 3.5 });
+      // Hold the first panel for a bit
+      tl.to({}, { duration: 3.0 });
 
       // Translate to the end (where the stacked container fills the screen)
       tl.to(panelsEl, {
@@ -220,9 +220,12 @@ export default function HorizontalScroll() {
         duration: 2,
       });
 
+      // Hold the first message after scrolling into view
+      tl.to({}, { duration: 3.0 });
+
       // Text Sequence Animation (In-Place)
       const msgs = gsap.utils.toArray('[data-msg-idx]') as any[];
-      const bgColors = ['#030303', '#0a3a1e', '#004a66', '#1a0a3a'];
+      const bgColors = ['#0a2e1e', '#0f2a4a', '#2c1b18', '#3d1a04', '#240f3a']; // Green, Blue, Brown, Orange, Purple
       
       // Center all messages horizontally using GSAP
       gsap.set(msgs, { xPercent: -50 });
@@ -232,21 +235,20 @@ export default function HorizontalScroll() {
           // Set initial state for hidden messages
           gsap.set(msg, { opacity: 0, y: 20 });
           
-          const dur = i === 1 ? 2.0 : 0.8; // Slower transition for the first one
-          const delay = i === 1 ? '+=1.0' : '+=0.3'; // Longer delay before fade in for the first one
+          const dur = 1.2; // Smooth transition
           
           // Fade out previous message
           tl.to(msgs[i-1], { opacity: 0, y: -20, filter: 'blur(5px)', duration: dur, ease: 'power2.inOut' });
           
           // Fade in current message
-          tl.to(msg, { opacity: 1, y: 0, filter: 'blur(0px)', duration: dur, ease: 'power2.out' }, delay);
+          tl.to(msg, { opacity: 1, y: 0, filter: 'blur(0px)', duration: dur, ease: 'power2.out' }, '+=0.2');
           
           // Hold current message
-          tl.to({}, { duration: i === 1 ? 2.5 : 1.5 });
+          tl.to({}, { duration: 3.0 });
         }
           
           // Change background color of the panel
-          tl.to('#dim-projects', { backgroundColor: bgColors[i], duration: 0.5, ease: 'power2.out' }, '<');
+          tl.to('#dim-projects', { backgroundColor: bgColors[i], duration: 1.0, ease: 'power2.out' }, '<');
       });
 
       // ── Text reveal for the first panel ──
@@ -291,7 +293,7 @@ export default function HorizontalScroll() {
     <section
       ref={sectionRef}
       id="dimensions"
-      style={{ position: 'relative', height: '100vh', background: 'rgba(7, 9, 11, 0.6)' }}
+      style={{ position: 'relative', height: '100vh', background: '#000000' }}
     >
       <div style={{ overflow: 'hidden', width: '100vw', height: '100vh' }}>
         <div
@@ -361,7 +363,7 @@ export default function HorizontalScroll() {
                       fontSize: 'clamp(13px, 1.3vw, 16px)',
                       fontWeight: 400,
                       letterSpacing: '0.05em',
-                      color: 'rgba(255,255,255,0.35)',
+                      color: '#ffffff',
                       maxWidth: '440px',
                       margin: '28px auto 0',
                       lineHeight: 1.75,
@@ -372,17 +374,7 @@ export default function HorizontalScroll() {
                 </div>
               )}
 
-              {/* Panel number */}
-              <span
-                className="text-system"
-                style={{
-                  position: 'absolute',
-                  bottom: '36px', right: '44px',
-                  color: 'rgba(255,255,255,0.12)',
-                }}
-              >
-                {dim.number} / 02
-              </span>
+
             </div>
           ))}
         </div>

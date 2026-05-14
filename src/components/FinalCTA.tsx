@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,6 +30,30 @@ export default function FinalCTA() {
     return () => window.removeEventListener('scroll', checkScroll);
   }, []);
   const [isRevealed, setIsRevealed] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    message: '',
+  });
+  const [startTime] = useState(Date.now());
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, 'leads'), {
+        ...formData,
+        source: 'contact_section',
+        timeSpent: Math.floor((Date.now() - startTime) / 1000), // in seconds
+        timestamp: serverTimestamp(),
+      });
+      setIsSubmitted(true);
+      setFormData({ name: '', mobile: '', message: '' });
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      alert('Error submitting request. Please try again.');
+    }
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -153,10 +179,26 @@ export default function FinalCTA() {
       rafRef.current = requestAnimationFrame(draw);
     };
 
-    draw();
+    let isAnimating = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !isAnimating) {
+          isAnimating = true;
+          draw();
+        } else if (!entry.isIntersecting) {
+          isAnimating = false;
+          cancelAnimationFrame(rafRef.current);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const section = sectionRef.current;
+    if (section) observer.observe(section);
+
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('mousemove', onMove);
+      if (section) observer.unobserve(section);
     };
   }, []);
 
@@ -222,14 +264,14 @@ export default function FinalCTA() {
           }}
         >
           READY TO BUILD<br />
-          <span style={{ color: 'rgba(255,255,255,0.25)' }}>THE FUTURE?</span>
+          <span style={{ color: '#ffffff' }}>THE FUTURE?</span>
         </h2>
 
         <div ref={ctaRef} style={{ opacity: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
           <p style={{
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: '16px',
-            color: 'rgba(255,255,255,0.5)',
+            color: '#ffffff',
             textAlign: 'center',
             maxWidth: '600px',
             lineHeight: 1.6,
@@ -237,101 +279,194 @@ export default function FinalCTA() {
           }}>
             For pricing and quotation, and idea discussion, feel free to contact.
           </p>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a
-              href="mailto:mitraai0001@gmail.com?subject=Inquiry%20from%20Website&body=Hi%20Webis%20team,%0A%0AI'm%20interested%20in%20building%20a%20website%20with%20you.%20Please%20let%20me%20know%20how%20we%20can%20proceed.%0A%0ABest%20regards,"
-              style={{
-                minWidth: '200px',
-                textAlign: 'center',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '10px',
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                padding: '14px 28px',
-                borderRadius: '30px',
-                color: '#ffffff',
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '14px',
-                letterSpacing: '0.1em',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.borderColor = 'rgba(0,212,255,0.5)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(0,212,255,0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              EMAIL US
-            </a>
-            <a
-              href="https://instagram.com/webis001"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                minWidth: '200px',
-                textAlign: 'center',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '10px',
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                padding: '14px 28px',
-                borderRadius: '30px',
-                color: '#ffffff',
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: '14px',
-                letterSpacing: '0.1em',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.borderColor = 'rgba(0,212,255,0.5)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(0,212,255,0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              INSTAGRAM
-            </a>
-          </div>
+          {isSubmitted ? (
+            <div style={{ textAlign: 'center', padding: '40px 24px', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', width: '100%', maxWidth: '450px' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: 'rgba(0,212,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20,6 9,17 4,12"></polyline></svg>
+              </div>
+              <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '20px', fontWeight: 600, color: '#ffffff', marginBottom: '8px' }}>
+                Thank You!
+              </h3>
+              <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
+                We have received your message and will get back to you shortly.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '450px' }}>
+              {/* Name */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'left' }}>
+                <label style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>
+                  FULL NAME
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="John Doe"
+                  style={{
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    color: '#ffffff',
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '14px',
+                    outline: 'none',
+                    transition: 'border-color 0.3s',
+                  }}
+                  onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,212,255,0.3)'}
+                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                />
+              </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <p style={{
+              {/* Mobile */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'left' }}>
+                <label style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>
+                  MOBILE NUMBER
+                </label>
+                <input
+                  type="tel"
+                  required
+                  value={formData.mobile}
+                  onChange={e => setFormData({ ...formData, mobile: e.target.value })}
+                  placeholder="+1 234 567 890"
+                  style={{
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    color: '#ffffff',
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '14px',
+                    outline: 'none',
+                    transition: 'border-color 0.3s',
+                  }}
+                  onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,212,255,0.3)'}
+                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                />
+              </div>
+
+              {/* Message */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'left' }}>
+                <label style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>
+                  MESSAGE
+                </label>
+                <textarea
+                  required
+                  value={formData.message}
+                  onChange={e => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Tell us about your project..."
+                  rows={4}
+                  style={{
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    color: '#ffffff',
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '14px',
+                    outline: 'none',
+                    resize: 'none',
+                    transition: 'border-color 0.3s',
+                  }}
+                  onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,212,255,0.3)'}
+                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                style={{
+                  background: '#ffffff',
+                  color: '#030508',
+                  border: 'none',
+                  borderRadius: '30px',
+                  padding: '14px',
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer',
+                  marginTop: '10px',
+                  transition: 'background 0.3s, transform 0.3s',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = '#00d4ff';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = '#ffffff';
+                  e.currentTarget.style.transform = 'translateY(0px)';
+                }}
+              >
+                SUBMIT REQUEST
+              </button>
+            </form>
+          )}
+
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap' }}>
+            {/* Email Button */}
+            <a href="mailto:mitraai0001@gmail.com" style={{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '30px',
+              padding: '12px 24px',
+              color: '#ffffff',
               fontFamily: 'Space Grotesk, sans-serif',
               fontSize: '13px',
-              fontWeight: 300,
-              letterSpacing: '0.1em',
-              color: 'rgba(255,255,255,0.5)',
-              marginBottom: '8px'
-            }}>
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.3s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#00d4ff'; e.currentTarget.style.background = 'rgba(0,212,255,0.05)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               mitraai0001@gmail.com
-            </p>
-            <p style={{
+            </a>
+
+            {/* Insta Button */}
+            <a href="https://instagram.com/webis001" target="_blank" rel="noopener noreferrer" style={{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '30px',
+              padding: '12px 24px',
+              color: '#ffffff',
               fontFamily: 'Space Grotesk, sans-serif',
               fontSize: '13px',
-              fontWeight: 300,
-              letterSpacing: '0.1em',
-              color: 'rgba(255,255,255,0.5)',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.3s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#ff2a6d'; e.currentTarget.style.background = 'rgba(255,42,109,0.05)'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              @webis001
+            </a>
+
+            {/* Location Badge */}
+            <div style={{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '30px',
+              padding: '12px 24px',
+              color: '#ffffff',
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: '13px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
             }}>
-              INSTA: @webis001
-            </p>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#05df97" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Based in Pune
+            </div>
           </div>
         </div>
       </div>
@@ -353,16 +488,17 @@ export default function FinalCTA() {
         position: 'absolute',
         bottom: '40px',
         left: 0, right: 0,
-        padding: '0 clamp(24px, 6vw, 96px)',
+        padding: '20px clamp(24px, 6vw, 96px) 0',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         zIndex: 2,
+        borderTop: '1px solid rgba(255,255,255,0.05)',
       }}>
-        <span className="text-system" style={{ color: 'rgba(255,255,255,0.15)' }}>
+        <span className="text-system" style={{ color: '#ffffff' }}>
           WEBIS STUDIO
         </span>
-        <span className="text-system" style={{ color: 'rgba(255,255,255,0.15)' }}>
+        <span className="text-system" style={{ color: '#ffffff' }}>
           © 2025 — ALL RIGHTS RESERVED
         </span>
         <button
@@ -370,7 +506,7 @@ export default function FinalCTA() {
           style={{
             background: 'none',
             border: 'none',
-            color: 'rgba(255,255,255,0.3)',
+            color: '#ffffff',
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.1em',
@@ -378,8 +514,8 @@ export default function FinalCTA() {
             transition: 'color 0.3s ease',
             textTransform: 'uppercase',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-          onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.3)'}
+          onMouseEnter={(e) => e.currentTarget.style.color = '#00d4ff'}
+          onMouseLeave={(e) => e.currentTarget.style.color = '#ffffff'}
         >
           BACK TO TOP ↑
         </button>

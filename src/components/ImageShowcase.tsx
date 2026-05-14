@@ -124,13 +124,14 @@ export default function ImageShowcase() {
           <Link href="/testimonials" style={{ textDecoration: 'none' }}>
             <motion.div
               style={{
-                background: 'rgba(255,255,255,0.02)',
-                border: '1px solid rgba(255,255,255,0.05)',
+                background: '#ffffff',
+                border: 'none',
                 padding: '16px 40px',
                 borderRadius: '30px',
-                color: '#ffffff',
-                fontFamily: 'Space Grotesk, sans-serif',
+                color: '#030508',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '14px',
+                fontWeight: 500,
                 letterSpacing: '0.1em',
                 cursor: 'pointer',
                 display: 'flex',
@@ -142,9 +143,8 @@ export default function ImageShowcase() {
               }}
               whileHover={{ 
                 scale: 1.05,
-                background: 'rgba(255,255,255,0.05)',
-                borderColor: 'rgba(0,212,255,0.3)',
-                boxShadow: '0 0 30px rgba(0,212,255,0.15)',
+                background: '#00d4ff',
+                boxShadow: '0 0 30px rgba(0,212,255,0.2)',
               }}
               whileTap={{ scale: 0.98 }}
             >
