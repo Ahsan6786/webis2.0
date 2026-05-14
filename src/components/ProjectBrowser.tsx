@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const projects = [
-  { slug: 'blingish', name: 'BLINGISH', id: 'SYS.001', category: 'E-COMMERCE SYSTEM', firstImage: '1.png' },
-  { slug: 'daily', name: 'DAILY', id: 'SYS.002', category: 'PRODUCTIVITY PLATFORM', firstImage: 'a.png' },
-  { slug: 'farm', name: 'A1 FARMS', id: 'SYS.003', category: 'AGRICULTURAL SYSTEM', firstImage: 'f1.png' },
-  { slug: 'ziya', name: 'ZIYA', id: 'SYS.004', category: 'AI INTERFACE', firstImage: 'z1.png' },
+  { slug: 'blingish', name: 'BLINGISH', id: 'SYS.001', category: 'E-COMMERCE SYSTEM', firstImage: '1.webp' },
+  { slug: 'daily', name: 'DAILY', id: 'SYS.002', category: 'PRODUCTIVITY PLATFORM', firstImage: 'a.webp' },
+  { slug: 'farm', name: 'A1 FARMS', id: 'SYS.003', category: 'AGRICULTURAL SYSTEM', firstImage: 'f1.webp' },
+  { slug: 'ziya', name: 'ZIYA', id: 'SYS.004', category: 'AI INTERFACE', firstImage: 'z1.webp' },
 ];
 
 export default function ProjectBrowser() {
