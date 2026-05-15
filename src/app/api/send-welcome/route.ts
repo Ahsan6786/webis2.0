@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 import { getBroadcastEmailTemplate } from '@/lib/email-template';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM_EMAIL = process.env.FROM_EMAIL || 'Mitra AI <hello@webiss.shop>';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'WEBIS <hello@webiss.shop>';
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     // Send the welcome email
     const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,
-      replyTo: 'mitraai0001@gmail.com',
+      replyTo: 'webissssssss@gmail.com',
       to: [email],
       subject: subject,
       html: getBroadcastEmailTemplate(subject, message, name),

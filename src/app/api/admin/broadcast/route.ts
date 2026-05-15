@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 import { getBroadcastEmailTemplate } from '@/lib/email-template';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_for_build');
-const FROM_EMAIL = process.env.FROM_EMAIL || 'Mitra AI <mitraai0001@gmail.com>';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'WEBIS <hello@webiss.shop>';
 
 // Helper to chunk arrays
 const chunkArray = <T>(array: T[], size: number): T[][] => {
@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
     for (const chunk of userChunks) {
       const emailBatch = chunk.map((user) => ({
         from: FROM_EMAIL,
-        replyTo: 'mitraai0001@gmail.com',
+        replyTo: 'webissssssss@gmail.com',
         to: [user.email],
         subject: subject,
         html: getBroadcastEmailTemplate(subject, message, user.name),
