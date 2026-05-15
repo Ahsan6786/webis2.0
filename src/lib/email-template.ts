@@ -143,15 +143,15 @@ export const getBroadcastEmailTemplate = (subject: string, message: string, name
       </div>
       
       <div class="card" style="background-color: #0a0d10; background-image: linear-gradient(#0a0d10, #0a0d10); border: 1px solid #1a1a1a; border-radius: 12px; padding: 48px 40px; margin-bottom: 40px; text-align: center; box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);">
-        <div class="greeting" style="font-size: 18px; margin-bottom: 24px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
+        <div class="greeting" style="font-size: 18px; margin-bottom: 24px; color: #00d4ff !important; -webkit-text-fill-color: #00d4ff !important;">
           ${name ? `Dear ${name},` : 'Hello,'}
         </div>
         
-        <div class="message" style="font-size: 15px; line-height: 1.8; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; margin-bottom: 32px; white-space: pre-line;">
+        <div class="message" style="font-size: 15px; line-height: 1.8; color: #00d4ff !important; -webkit-text-fill-color: #00d4ff !important; margin-bottom: 32px; white-space: pre-line;">
           ${message}
         </div>
         
-        <div class="custom-message" style="font-size: 15px; line-height: 1.8; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; margin-top: 32px; padding-top: 32px; border-top: 1px solid #1a1a1a; white-space: pre-line;">
+        <div class="custom-message" style="font-size: 15px; line-height: 1.8; color: #00d4ff !important; -webkit-text-fill-color: #00d4ff !important; margin-top: 32px; padding-top: 32px; border-top: 1px solid #1a1a1a; white-space: pre-line;">
 Thank you for connecting with WEBIS.
 
 Our team will shortly connect with you to build something better together.
@@ -159,11 +159,7 @@ Our team will shortly connect with you to build something better together.
 We appreciate your interest and support.
         </div>
         
-        <div style="margin-top: 32px; padding: 24px; background-color: rgba(0, 212, 255, 0.05); border-radius: 8px; border: 1px solid rgba(0, 212, 255, 0.2); font-size: 16px; font-weight: 600; color: #00d4ff !important; -webkit-text-fill-color: #00d4ff !important; line-height: 1.6; text-align: left;">
-          ⚠️ IMPORTANT: Please check your Spam or Junk folder. If this email landed there, mark it as "Not Spam" so you never miss an update from us!
-        </div>
-        
-        <div style="margin-top: 40px; font-weight: 500; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-size: 14px;">
+        <div style="margin-top: 40px; font-weight: 500; color: #00d4ff !important; -webkit-text-fill-color: #00d4ff !important; font-size: 14px;">
           — WEBIS STUDIO
         </div>
       </div>

@@ -413,6 +413,11 @@ export default function FinalCTA() {
                 />
               </div>
 
+              {/* Spam Warning */}
+              <div style={{ padding: '12px', background: 'rgba(0, 212, 255, 0.05)', border: '1px solid rgba(0, 212, 255, 0.2)', borderRadius: '8px', fontSize: '12px', color: '#00d4ff', lineHeight: 1.5, textAlign: 'left', marginTop: '10px' }}>
+                ⚠️ IMPORTANT: Please check your Spam or Junk folder. If our email landed there, mark it as "Not Spam" so you never miss an update from us!
+              </div>
+
               {/* Submit Button */}
               <button
                 type="submit"
