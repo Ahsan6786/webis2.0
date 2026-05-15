@@ -5,6 +5,7 @@ import { auth, db } from '@/lib/firebase';
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { collection, getDocs, query, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
+import Link from 'next/link';
 
 interface Lead {
   id: string;
@@ -266,30 +267,46 @@ export default function AdminPage() {
               Leads & Inquiries
             </h1>
           </div>
-          <button
-            onClick={handleLogout}
-            style={{
-              background: 'transparent',
-              color: '#ffffff',
-              border: '1px solid rgba(255,255,255,0.4)',
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <Link href="/admin/broadcast" style={{
+              background: '#00d4ff',
+              color: '#030508',
+              border: 'none',
               borderRadius: '20px',
               padding: '10px 20px',
               fontFamily: 'Space Grotesk, sans-serif',
               fontSize: '12px',
-              cursor: 'pointer',
+              fontWeight: 600,
+              textDecoration: 'none',
               transition: 'all 0.3s',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = '#ff4a4a';
-              e.currentTarget.style.color = '#ff4a4a';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
-              e.currentTarget.style.color = '#ffffff';
-            }}
-          >
-            LOGOUT
-          </button>
+            }}>
+              EMAIL BROADCAST
+            </Link>
+            <button
+              onClick={handleLogout}
+              style={{
+                background: 'transparent',
+                color: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.4)',
+                borderRadius: '20px',
+                padding: '10px 20px',
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#ff4a4a';
+                e.currentTarget.style.color = '#ff4a4a';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+            >
+              LOGOUT
+            </button>
+          </div>
         </div>
 
         {/* Stats Grid */}
