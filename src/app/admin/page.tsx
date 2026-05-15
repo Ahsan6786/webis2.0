@@ -10,6 +10,7 @@ import Link from 'next/link';
 interface Lead {
   id: string;
   name: string;
+  email?: string;
   mobile: string;
   purpose?: string;
   message?: string;
@@ -422,6 +423,14 @@ export default function AdminPage() {
                       <h3 style={{ fontFamily: 'Inter', fontSize: '18px', fontWeight: 600, color: '#ffffff' }}>{lead.name}</h3>
                       <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginTop: '6px' }}>
                         <span style={{ fontFamily: 'Space Grotesk', fontSize: '13px', color: 'rgba(255,255,255,0.8)' }}>{lead.mobile}</span>
+                        {lead.email && (
+                          <>
+                            <span style={{ width: '4px', height: '4px', background: 'rgba(255,255,255,0.4)', borderRadius: '50%' }}></span>
+                            <span style={{ fontFamily: 'Space Grotesk', fontSize: '13px', color: 'rgba(255,255,255,0.8)' }}>
+                              <a href={`mailto:${lead.email}`} style={{ color: 'inherit', textDecoration: 'none' }} onMouseEnter={e => e.currentTarget.style.color = '#00d4ff'} onMouseLeave={e => e.currentTarget.style.color = 'inherit'}>{lead.email}</a>
+                            </span>
+                          </>
+                        )}
                         <button 
                           onClick={(e) => {
                             navigator.clipboard.writeText(lead.mobile);

@@ -32,6 +32,7 @@ export default function FinalCTA() {
   const [isRevealed, setIsRevealed] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     mobile: '',
     message: '',
   });
@@ -48,7 +49,7 @@ export default function FinalCTA() {
         timestamp: serverTimestamp(),
       });
       setIsSubmitted(true);
-      setFormData({ name: '', mobile: '', message: '' });
+      setFormData({ name: '', email: '', mobile: '', message: '' });
     } catch (error) {
       console.error('Error adding document: ', error);
       alert('Error submitting request. Please try again.');
@@ -304,6 +305,33 @@ export default function FinalCTA() {
                   value={formData.name}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
                   placeholder="John Doe"
+                  style={{
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    color: '#ffffff',
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '14px',
+                    outline: 'none',
+                    transition: 'border-color 0.3s',
+                  }}
+                  onFocus={e => e.currentTarget.style.borderColor = 'rgba(0,212,255,0.3)'}
+                  onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                />
+              </div>
+
+              {/* Email */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', textAlign: 'left' }}>
+                <label style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>
+                  EMAIL ADDRESS
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="john@example.com"
                   style={{
                     background: 'rgba(255,255,255,0.02)',
                     border: '1px solid rgba(255,255,255,0.05)',

@@ -10,6 +10,7 @@ export default function LeadPopup() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     mobile: '',
     purpose: '',
   });
@@ -151,6 +152,30 @@ export default function LeadPopup() {
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Ahsan"
+                      style={{
+                        background: 'rgba(255,255,255,0.02)',
+                        border: '1px solid rgba(255,255,255,0.05)',
+                        borderRadius: '8px',
+                        padding: '12px 16px',
+                        color: '#ffffff',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '14px',
+                        outline: 'none',
+                      }}
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <label style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>
+                      EMAIL ADDRESS
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={e => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="ahsan@example.com"
                       style={{
                         background: 'rgba(255,255,255,0.02)',
                         border: '1px solid rgba(255,255,255,0.05)',

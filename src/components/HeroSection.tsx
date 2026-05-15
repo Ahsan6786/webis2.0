@@ -21,11 +21,13 @@ export default function HeroSection() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const name = formData.get('name');
+    const email = formData.get('email');
     const contact = formData.get('contact');
 
     try {
       await addDoc(collection(db, 'leads'), {
         name,
+        email,
         mobile: contact,
         timestamp: new Date(),
         purpose: 'Book a Call',
@@ -260,6 +262,38 @@ export default function HeroSection() {
                     name="name" 
                     required 
                     placeholder="John Doe"
+                    style={{ 
+                      width: '100%', 
+                      padding: '14px 16px', 
+                      background: 'rgba(255,255,255,0.03)', 
+                      border: '1px solid rgba(255,255,255,0.08)', 
+                      color: '#ffffff', 
+                      borderRadius: '12px',
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '14px',
+                      transition: 'all 0.3s ease',
+                      outline: 'none',
+                    }} 
+                    onFocus={e => {
+                      e.currentTarget.style.borderColor = '#00d4ff';
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                      e.currentTarget.style.boxShadow = '0 0 15px rgba(0,212,255,0.1)';
+                    }}
+                    onBlur={e => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+                
+                <div style={{ marginBottom: '20px' }}>
+                  <label style={{ display: 'block', color: 'rgba(255,255,255,0.8)', marginBottom: '8px', fontSize: '11px', fontFamily: 'Space Grotesk, sans-serif', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Email Address</label>
+                  <input 
+                    type="email" 
+                    name="email" 
+                    required 
+                    placeholder="john@example.com"
                     style={{ 
                       width: '100%', 
                       padding: '14px 16px', 
