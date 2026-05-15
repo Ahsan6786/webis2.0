@@ -9,6 +9,8 @@ export const getBroadcastEmailTemplate = (subject: string, message: string, name
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${subject}</title>
+  <meta name="color-scheme" content="dark">
+  <meta name="supported-color-schemes" content="dark">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500&display=swap');
     
@@ -133,14 +135,14 @@ export const getBroadcastEmailTemplate = (subject: string, message: string, name
     }
   </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #030508; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <div class="wrapper" style="width: 100%; background-color: #030508; padding: 60px 0;">
-    <div class="container" style="max-width: 600px; margin: 0 auto; background-color: #030508;">
+<body style="margin: 0; padding: 0; background-color: #030508; background-image: linear-gradient(#030508, #030508); color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <div class="wrapper" style="width: 100%; background-color: #030508; background-image: linear-gradient(#030508, #030508); padding: 60px 0;">
+    <div class="container" style="max-width: 600px; margin: 0 auto; background-color: #030508; background-image: linear-gradient(#030508, #030508);">
       <div class="header" style="text-align: center; margin-bottom: 40px;">
         <img src="${baseUrl}/logo.png" alt="WEBIS" class="logo-img" style="max-width: 120px; height: auto; display: block; margin: 0 auto;" />
       </div>
       
-      <div class="card" style="background-color: #0a0d10; border: 1px solid #1a1a1a; border-radius: 12px; padding: 48px 40px; margin-bottom: 40px; text-align: center; box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);">
+      <div class="card" style="background-color: #0a0d10; background-image: linear-gradient(#0a0d10, #0a0d10); border: 1px solid #1a1a1a; border-radius: 12px; padding: 48px 40px; margin-bottom: 40px; text-align: center; box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);">
         <div class="greeting" style="font-size: 18px; margin-bottom: 24px; color: #ffffff;">
           ${name ? `Dear ${name},` : 'Hello,'}
         </div>
