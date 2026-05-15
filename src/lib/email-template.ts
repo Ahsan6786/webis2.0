@@ -1,8 +1,6 @@
 export const getBroadcastEmailTemplate = (subject: string, message: string, name?: string) => {
-  // Use VERCEL_URL if available, otherwise a placeholder. Ensure to use https.
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL 
-    ? process.env.NEXT_PUBLIC_APP_URL 
-    : (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://yourdomain.com');
+  // Use absolute production URL for logo image
+  const baseUrl = 'https://webiss.shop';
 
   return `
 <!DOCTYPE html>
@@ -135,23 +133,23 @@ export const getBroadcastEmailTemplate = (subject: string, message: string, name
     }
   </style>
 </head>
-<body>
-  <div class="wrapper">
-    <div class="container">
-      <div class="header">
-        <img src="${baseUrl}/logo.png" alt="WEBIS" class="logo-img" />
+<body style="margin: 0; padding: 0; background-color: #030508; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <div class="wrapper" style="width: 100%; background-color: #030508; padding: 60px 0;">
+    <div class="container" style="max-width: 600px; margin: 0 auto; background-color: #030508;">
+      <div class="header" style="text-align: center; margin-bottom: 40px;">
+        <img src="${baseUrl}/logo.png" alt="WEBIS" class="logo-img" style="max-width: 120px; height: auto; display: block; margin: 0 auto;" />
       </div>
       
-      <div class="card">
-        <div class="greeting">
+      <div class="card" style="background-color: #0a0d10; border: 1px solid #1a1a1a; border-radius: 12px; padding: 48px 40px; margin-bottom: 40px; text-align: center; box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);">
+        <div class="greeting" style="font-size: 18px; margin-bottom: 24px; color: #ffffff;">
           ${name ? `Dear ${name},` : 'Hello,'}
         </div>
         
-        <div class="message">
+        <div class="message" style="font-size: 15px; line-height: 1.8; color: #b3b3b3; margin-bottom: 32px; white-space: pre-line;">
           ${message}
         </div>
         
-        <div class="custom-message">
+        <div class="custom-message" style="font-size: 15px; line-height: 1.8; color: #b3b3b3; margin-top: 32px; padding-top: 32px; border-top: 1px solid #1a1a1a; white-space: pre-line;">
 Thank you for connecting with WEBIS.
 
 Our team will shortly connect with you to build something better together.
@@ -164,16 +162,16 @@ We appreciate your interest and support.
         </div>
       </div>
       
-      <div class="footer">
-        <div class="footer-text">
+      <div class="footer" style="text-align: center; padding-top: 30px;">
+        <div class="footer-text" style="font-size: 11px; color: #4d4d4d; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;">
           © ${new Date().getFullYear()} WEBIS. ALL RIGHTS RESERVED.
         </div>
-        <div class="social-links">
-          <a href="#" class="social-link">WEBSITE</a>
-          <a href="#" class="social-link">INSTAGRAM</a>
-          <a href="#" class="social-link">TWITTER</a>
+        <div class="social-links" style="margin-top: 24px;">
+          <a href="#" class="social-link" style="color: #808080; text-decoration: none; font-size: 12px; margin: 0 12px; letter-spacing: 0.05em;">WEBSITE</a>
+          <a href="#" class="social-link" style="color: #808080; text-decoration: none; font-size: 12px; margin: 0 12px; letter-spacing: 0.05em;">INSTAGRAM</a>
+          <a href="#" class="social-link" style="color: #808080; text-decoration: none; font-size: 12px; margin: 0 12px; letter-spacing: 0.05em;">TWITTER</a>
         </div>
-        <div class="unsub">
+        <div class="unsub" style="margin-top: 30px; font-size: 11px; color: #333333;">
           If you prefer not to receive these emails, you can unsubscribe at any time.
         </div>
       </div>

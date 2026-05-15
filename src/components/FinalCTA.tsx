@@ -48,6 +48,16 @@ export default function FinalCTA() {
         timeSpent: Math.floor((Date.now() - startTime) / 1000), // in seconds
         timestamp: serverTimestamp(),
       });
+      
+      // Trigger automatic welcome email
+      if (formData.email) {
+        fetch('/api/send-welcome', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: formData.email, name: formData.name })
+        }).catch(err => console.error('Failed to send welcome email:', err));
+      }
+
       setIsSubmitted(true);
       setFormData({ name: '', email: '', mobile: '', message: '' });
     } catch (error) {

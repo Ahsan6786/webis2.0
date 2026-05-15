@@ -33,6 +33,16 @@ export default function HeroSection() {
         purpose: 'Book a Call',
         source: 'hero_popup',
       });
+      
+      // Trigger automatic welcome email
+      if (email) {
+        fetch('/api/send-welcome', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name })
+        }).catch(err => console.error('Failed to send welcome email:', err));
+      }
+
       alert('Booking submitted successfully!');
       setIsModalOpen(false);
     } catch (error) {

@@ -91,6 +91,7 @@ export async function POST(req: NextRequest) {
     for (const chunk of userChunks) {
       const emailBatch = chunk.map((user) => ({
         from: FROM_EMAIL,
+        replyTo: 'mitraai0001@gmail.com',
         to: [user.email],
         subject: subject,
         html: getBroadcastEmailTemplate(subject, message, user.name),
