@@ -16,5 +16,13 @@ service cloud.firestore {
       // Allow anyone to update analytics (e.g., increment view count)
       allow create, update: if true;
     }
+    
+    match /broadcastLogs/{logId} {
+      allow read: if request.auth != null && request.auth.token.email == 'ahsanimamkhan06@gmail.com';
+    }
+    
+    match /emailStatus/{statusId} {
+      allow read: if request.auth != null && request.auth.token.email == 'ahsanimamkhan06@gmail.com';
+    }
   }
 }
