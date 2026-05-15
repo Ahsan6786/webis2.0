@@ -159,6 +159,10 @@ Our team will shortly connect with you to build something better together.
 We appreciate your interest and support.
         </div>
         
+        <div style="margin-top: 32px; padding: 24px; background-color: rgba(0, 212, 255, 0.05); border-radius: 8px; border: 1px solid rgba(0, 212, 255, 0.2); font-size: 16px; font-weight: 600; color: #00d4ff !important; line-height: 1.6; text-align: left;">
+          ⚠️ IMPORTANT: Please check your Spam or Junk folder. If this email landed there, mark it as "Not Spam" so you never miss an update from us!
+        </div>
+        
         <div style="margin-top: 40px; font-weight: 500; color: #ffffff !important; font-size: 14px;">
           — WEBIS STUDIO
         </div>
