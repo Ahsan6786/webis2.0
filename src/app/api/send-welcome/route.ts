@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getBroadcastEmailTemplate } from '@/lib/email-template';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_for_build');
 const FROM_EMAIL = process.env.FROM_EMAIL || 'WEBIS <hello@webiss.shop>';
 
 export async function POST(req: NextRequest) {
